@@ -3,3 +3,9 @@
 ################################################################################
 
 *.suo
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1/obj/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceInterface/obj/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceModel/obj/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.Tests/obj/Debug
+/packages
+*.user
