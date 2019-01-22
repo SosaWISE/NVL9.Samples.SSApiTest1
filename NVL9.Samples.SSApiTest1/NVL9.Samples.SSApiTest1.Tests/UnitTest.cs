@@ -28,5 +28,19 @@ namespace NVL9.Samples.SSApiTest1.Tests
 
             Assert.That(response.Result, Is.EqualTo("Hello, World!"));
         }
+
+        [Test]
+        public void PhysicianSearchTest()
+        {
+            var service = appHost.Container.Resolve<MyServices>();
+
+            var response = service.Post(new PhysicianSearch
+            {
+                City = "Murray UTAH",
+                Gender = "Some Doctor"
+            });
+
+            Assert.That(response.FullAddress, Is.EqualTo("Murray UTAH"));
+        }
     }
 }

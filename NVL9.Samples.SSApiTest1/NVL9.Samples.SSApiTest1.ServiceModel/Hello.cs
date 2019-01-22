@@ -10,7 +10,7 @@ namespace NVL9.Samples.SSApiTest1.ServiceModel
 {
     using ServiceStack;
 
-    [Route("/hello/{Name}")]
+    [Route("/hello/{Name}", "POST,GET")]
     public class Hello : IPost, IReturn<HelloResponse>
     {
         public string Name { get; set; }
