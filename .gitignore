@@ -10,3 +10,7 @@
 /packages
 *.user
 /.vs
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1/bin/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceInterface/bin/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceModel/bin/Debug
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.Tests/bin/Debug
