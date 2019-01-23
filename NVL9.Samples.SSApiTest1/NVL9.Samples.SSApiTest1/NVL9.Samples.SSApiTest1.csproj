@@ -42,6 +42,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestCM|AnyCPU'">
     <OutputPath>bin\TestCM\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -140,6 +150,10 @@
       <DependentUpon>Commands.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
+    <None Include="Deployment\Commands.local.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
     <None Include="Deployment\Commands.Release.config">
       <DependentUpon>Commands.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
@@ -156,6 +170,10 @@
       <TransformOnBuild>true</TransformOnBuild>
     </None>
     <None Include="Deployment\ConnectionStrings.Debug.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStrings.local.config">
       <DependentUpon>ConnectionStrings.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
@@ -192,11 +210,29 @@
     <None Include="Deployment\MimeTypes.config" />
     <None Include="Deployment\Portraits.config" />
     <None Include="Deployment\Prototypes.config" />
-    <None Include="Deployment\Sitecore.config" />
-    <None Include="Deployment\Sitecore.Debug.config" />
-    <None Include="Deployment\Sitecore.local.config" />
-    <None Include="Deployment\Sitecore.TestCD.config" />
-    <None Include="Deployment\Sitecore.TestCM.config" />
+    <None Include="Deployment\Sitecore.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Deployment\Sitecore.Debug.config">
+      <DependentUpon>Sitecore.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Sitecore.local.config">
+      <DependentUpon>Sitecore.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Sitecore.Release.config">
+      <DependentUpon>Sitecore.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Sitecore.TestCD.config">
+      <DependentUpon>Sitecore.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Sitecore.TestCM.config">
+      <DependentUpon>Sitecore.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
     <None Include="Deployment\XamlSharp.config" />
     <None Include="packages.config" />
   </ItemGroup>
