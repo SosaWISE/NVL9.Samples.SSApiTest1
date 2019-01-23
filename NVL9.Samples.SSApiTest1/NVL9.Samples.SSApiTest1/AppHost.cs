@@ -21,7 +21,9 @@ namespace NVL9.Samples.SSApiTest1
         {
             //Config examples
             //this.Plugins.Add(new PostmanFeature());
-            //this.Plugins.Add(new CorsFeature());
+            Plugins.Add(new CorsFeature(allowedHeaders: "Content-Type",
+                allowCredentials: true,
+                allowOriginWhitelist: new[] { "https://null.jsbin.com" }));
         }
     }
 }
