@@ -14,6 +14,8 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +35,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestCD|AnyCPU'">
+    <OutputPath>bin\TestCD\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestCM|AnyCPU'">
+    <OutputPath>bin\TestCM\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -106,7 +114,82 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Commands.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Deployment\Commands.Debug.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Commands.Release.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Commands.TestCD.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\Commands.TestCM.config">
+      <DependentUpon>Commands.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStrings.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Deployment\ConnectionStrings.Debug.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStrings.Release.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStrings.TestCD.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStrings.TestCM.config">
+      <DependentUpon>ConnectionStrings.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStringsOracle.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Deployment\ConnectionStringsOracle.Debug.config">
+      <DependentUpon>ConnectionStringsOracle.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStringsOracle.Release.config">
+      <DependentUpon>ConnectionStringsOracle.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\ConnectionStringsOracle.TestCD.config">
+      <DependentUpon>ConnectionStringsOracle.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="Deployment\FieldTypes.config" />
+    <None Include="Deployment\Icons.config" />
+    <None Include="Deployment\LanguageDefinitions.config" />
+    <None Include="Deployment\MimeTypes.config" />
+    <None Include="Deployment\Portraits.config" />
+    <None Include="Deployment\Prototypes.config" />
+    <None Include="Deployment\Sitecore.config" />
+    <None Include="Deployment\Sitecore.Debug.config" />
+    <None Include="Deployment\Sitecore.local.config" />
+    <None Include="Deployment\Sitecore.TestCD.config" />
+    <None Include="Deployment\Sitecore.TestCM.config" />
+    <None Include="Deployment\XamlSharp.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +208,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.VisualStudio.SlowCheetah.3.1.66\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
