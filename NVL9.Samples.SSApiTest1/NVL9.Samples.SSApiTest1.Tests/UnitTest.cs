@@ -1,46 +1,63 @@
-﻿using NUnit.Framework;
-using ServiceStack;
-using ServiceStack.Testing;
-using NVL9.Samples.SSApiTest1.ServiceInterface;
-using NVL9.Samples.SSApiTest1.ServiceModel;
+﻿// <copyright file="UnitTest.cs" company="SelectHealth.org">
+//     Copyright (c) 2019 SelectHealth.org.  All rights reserved.
+// </copyright>
+// <summary>
+//     Document created on 2019-01-22-9:11 AM
+// </summary>
+// <author>Andres Sosa (imail2)</author>
 
 namespace NVL9.Samples.SSApiTest1.Tests
 {
+    using System.Threading.Tasks;
+    using NUnit.Framework;
+    using ServiceInterface;
+    using ServiceModel;
+    using ServiceStack;
+    using ServiceStack.Testing;
+
     public class UnitTest
     {
-        private readonly ServiceStackHost appHost;
+        private readonly ServiceStackHost _appHost;
 
         public UnitTest()
         {
-            appHost = new BasicAppHost().Init();
-            appHost.Container.AddTransient<MyServices>();
+            _appHost = new BasicAppHost().Init();
+            _appHost.Container.AddTransient<MyServices>();
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown() => appHost.Dispose();
+        public void OneTimeTearDown()
+        {
+            _appHost.Dispose();
+        }
 
         [Test]
         public void Can_call_MyServices()
         {
-            var service = appHost.Container.Resolve<MyServices>();
+            var service = _appHost.Container.Resolve<MyServices>();
 
-            var response = (HelloResponse)service.Any(new Hello { Name = "World" });
+            var response = (HelloResponse) service.Any(new Hello {Name = "World"});
 
             Assert.That(response.Result, Is.EqualTo("Hello, World!"));
         }
 
         [Test]
-        public void PhysicianSearchTest()
+        public async Task PhysicianSearchTest()
         {
-            var service = appHost.Container.Resolve<MyServices>();
+            var service = _appHost.Container.Resolve<MyServices>();
 
-            var response = service.Post(new PhysicianSearch
+            PhysicianSearch request = new PhysicianSearch
             {
                 City = "Murray UTAH",
                 Gender = "Some Doctor"
-            });
+            };
+            var responseDto = await service.Post(request);
 
-            Assert.That(response.FullAddress, Is.EqualTo("Murray UTAH"));
+            Assert.AreEqual(responseDto.Code, DtoMessageCodes.Success);
+
+            Assert.That(responseDto.Value.Count, Is.EqualTo(1));
+
+            Assert.That(responseDto.Value[0].FullAddress, Is.EqualTo("Murray UTAH"));
         }
     }
 }
