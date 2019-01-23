@@ -27,3 +27,10 @@
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceInterface/obj
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceModel/obj
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.Tests/obj
+/Business/NVL9.Business/bin/Release
+/Framework/NVL9/bin/Release
+/Framework/NVL9.Models/bin/Release
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1/bin/Release
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceInterface/bin/Release
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceModel/bin/Release
+/NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.Tests/bin/Release
