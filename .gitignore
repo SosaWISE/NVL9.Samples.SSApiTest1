@@ -34,3 +34,5 @@
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceInterface/bin/Release
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.ServiceModel/bin/Release
 /NVL9.Samples.SSApiTest1/NVL9.Samples.SSApiTest1.Tests/bin/Release
+/DataAccess/NVL9.DataAccess/bin/Release
+/DataAccess/NVL9.DataAccess/obj/Release
