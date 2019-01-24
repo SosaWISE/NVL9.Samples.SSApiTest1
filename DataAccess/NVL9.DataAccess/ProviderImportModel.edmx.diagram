@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="67a8c01cd00d40dc9c76f22e5d3ebbf8" Name="Diagram1">
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.Account" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.ALL_ACTIONS" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.AWARD" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.AWARD_ACTION" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.BOARDCERTIFICATION" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.BOARDCERTIFICATION_ACTION" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.DEGREE" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.DEGREE_ACTION" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.HOSPAFFILIATION" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.HOSPAFFILIATION_ACTION" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LANGUAGE" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LANGUAGE_ACTION" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATION" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATION_ACTION" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATIONINSURANCE" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATIONINSURANCE_ACTION" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.MEMBERSHIP" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.MEMBERSHIP_ACTION" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.PATIENTEDUCATION" Width="1.5" PointX="3" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.PATIENTEDUCATION_ACTION" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.PROVIDER" Width="1.5" PointX="0.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.PROVIDER_ACTION" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SITECORELOCATION" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SPECIALTY" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SPECIALTY_ACTION" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.sysdiagram" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.TRAINING" Width="1.5" PointX="3" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.TRAINING_ACTION" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.WEBRESOURCE" Width="1.5" PointX="3" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.WEBRESOURCE_ACTION" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.FileImportSetting" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.application_USZipcodes" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.BOARDCERTIFICATION_RAW" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.DEGREE_RAW" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.HOSPAFFILIATION_RAW" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATION_RAW" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.LOCATIONINSURANCE_RAW" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.PROVIDER_RAW" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_COUNTY" Width="1.5" PointX="5.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_COUNTYPLANINTERSECTION" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_OPTIONALBENEFITS" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_PLAN" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_ZIPCODE" Width="1.5" PointX="11.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SH_ZIPCODECOUNTYINTERSECTION" Width="1.5" PointX="13.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.SPECIALTY_RAW" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.STEPEXPRESSREGISTRATION" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FRG_DBTESTSModel.TRAINING_RAW" Width="1.5" PointX="17.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_AWARD_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_BOARDCERTIFICATION_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_DEGREE_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_HOSPAFFILIATION_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_LANGUAGE_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_LOCATION_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_LOCATIONINSURANCE_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_MEMBERSHIP_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_PATIENTEDUCATION_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_SPECIALTY_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_TRAINING_PROVIDER" ManuallyRouted="false" />
+        <AssociationConnector Association="FRG_DBTESTSModel.FK_WEBRESOURCE_PROVIDER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

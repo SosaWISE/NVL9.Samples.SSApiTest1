@@ -1,0 +1,2950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FRG_DBTESTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ALL_ACTIONS">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.application_USZipcodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="application_USZipcodes">
+          <Key>
+            <PropertyRef Name="Zipcode" />
+            <PropertyRef Name="Latitude" />
+            <PropertyRef Name="Longitude" />
+          </Key>
+          <Property Name="Zipcode" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="City" Type="nchar" MaxLength="50" />
+          <Property Name="State" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="AWARD">
+          <Key>
+            <PropertyRef Name="AWARD_ID" />
+          </Key>
+          <Property Name="AWARD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="FCILITY_ID" Type="nvarchar(max)" />
+          <Property Name="AWARD_NM" Type="nvarchar(max)" />
+          <Property Name="AWARD_DSC" Type="nvarchar(max)" />
+          <Property Name="EFFECTIVE_DT" Type="nvarchar(max)" />
+          <Property Name="EXPIRE_DT" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AWARD_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.AWARD_RAW' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AWARD_RAW">
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="FCILITY_ID" Type="nvarchar(max)" />
+          <Property Name="AWARD_NM" Type="nvarchar(max)" />
+          <Property Name="AWARD_DSC" Type="nvarchar(max)" />
+          <Property Name="EFFECTIVE_DT" Type="nvarchar(max)" />
+          <Property Name="EXPIRE_DT" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="BOARDCERTIFICATION">
+          <Key>
+            <PropertyRef Name="BOARDCERTIFICATION_ID" />
+          </Key>
+          <Property Name="BOARDCERTIFICATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="BOARD_DSC" Type="nvarchar(max)" />
+          <Property Name="AWARD_DT" Type="nvarchar(max)" />
+          <Property Name="REVERIFY_DT" Type="nvarchar(max)" />
+          <Property Name="EXPIRE_DT" Type="nvarchar(max)" />
+          <Property Name="LIFETIMECERTIFICATION_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BOARDCERTIFICATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.BOARDCERTIFICATION_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BOARDCERTIFICATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="BOARD_DSC" Type="nvarchar(max)" />
+          <Property Name="AWARD_DT" Type="nvarchar(max)" />
+          <Property Name="REVERIFY_DT" Type="nvarchar(max)" />
+          <Property Name="EXPIRE_DT" Type="nvarchar(max)" />
+          <Property Name="LIFETIMECERTIFICATION_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DEGREE">
+          <Key>
+            <PropertyRef Name="DEGREE_ID" />
+          </Key>
+          <Property Name="DEGREE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="LEVEL_DSC" Type="nvarchar(max)" />
+          <Property Name="DEGREE_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_CITY" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_ST" Type="nvarchar(max)" />
+          <Property Name="PROGRAM_DSC" Type="nvarchar(max)" />
+          <Property Name="START_DT" Type="nvarchar(max)" />
+          <Property Name="END_DT" Type="nvarchar(max)" />
+          <Property Name="GRADUATED_FLG" Type="nvarchar(max)" />
+          <Property Name="ED_SPECIALITY" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DEGREE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.DEGREE_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DEGREE_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="LEVEL_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="LEVEL_DSC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DEGREE_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_CITY" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_ST" Type="nvarchar(max)" />
+          <Property Name="PROGRAM_DSC" Type="nvarchar(max)" />
+          <Property Name="START_DT" Type="nvarchar(max)" />
+          <Property Name="END_DT" Type="nvarchar(max)" />
+          <Property Name="GRADUATED_FLG" Type="nvarchar(max)" />
+          <Property Name="ED_SPECIALITY" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HOSPAFFILIATION">
+          <Key>
+            <PropertyRef Name="HOSPAFFILIATION_ID" />
+          </Key>
+          <Property Name="HOSPAFFILIATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="HOSPITAL_NM" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="FACILITY_ID" Type="nvarchar(max)" />
+          <Property Name="PRIMARY_FLG" Type="nvarchar(max)" />
+          <Property Name="FCILITY_STATUS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HOSPAFFILIATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.HOSPAFFILIATION_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HOSPAFFILIATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="HOSPITAL_NM" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="HOSPITAL_NM" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="SOME_NUMBER" Type="nvarchar(max)" />
+          <Property Name="FACILITY_ID" Type="nvarchar(max)" />
+          <Property Name="PRIMARY_FLG" Type="nvarchar(max)" />
+          <Property Name="FCILITY_STATUS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="LANGUAGE_ID" />
+          </Key>
+          <Property Name="LANGUAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="LANGUAGE_DSC" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LANGUAGE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.LANGUAGE_RAW' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LANGUAGE_RAW">
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="LANGUAGE_DSC" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="ADDRESS_SEQ" Type="nvarchar(max)" />
+          <Property Name="PRIMARYADDRESS_FLG" Type="nvarchar(max)" />
+          <Property Name="PRACTICE_NM" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_ONE" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_TWO" Type="nvarchar(max)" />
+          <Property Name="CITY" Type="nvarchar(max)" />
+          <Property Name="ST" Type="nvarchar(max)" />
+          <Property Name="COUNTY" Type="nvarchar(max)" />
+          <Property Name="ZIP_CODE" Type="nvarchar(max)" />
+          <Property Name="PHONE_NBR" Type="nvarchar(max)" />
+          <Property Name="FAX_NBR" Type="nvarchar(max)" />
+          <Property Name="LATITUDE" Type="nvarchar(max)" />
+          <Property Name="LONGITUDE" Type="nvarchar(max)" />
+          <Property Name="HOURS1" Type="nvarchar(max)" />
+          <Property Name="HOURS2" Type="nvarchar(max)" />
+          <Property Name="OPENPRACTICE_DSC" Type="nvarchar(max)" />
+          <Property Name="OPENLATE_FLG" Type="nvarchar(max)" />
+          <Property Name="OPENEARLY_FLG" Type="nvarchar(max)" />
+          <Property Name="OPENWEEKEND_FLG" Type="nvarchar(max)" />
+          <Property Name="AFTERHOURSINSTRUCTIONS" Type="nvarchar(max)" />
+          <Property Name="FACILITY_ID" Type="nvarchar(max)" />
+          <Property Name="ADA_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOCATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.LOCATION_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LOCATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="ADDRESS_SEQ" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="ADDRESS_SEQ" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PRIMARYADDRESS_FLG" Type="nvarchar(max)" />
+          <Property Name="PRACTICE_NM" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_ONE" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_TWO" Type="nvarchar(max)" />
+          <Property Name="CITY" Type="nvarchar(max)" />
+          <Property Name="ST" Type="nvarchar(max)" />
+          <Property Name="COUNTY" Type="nvarchar(max)" />
+          <Property Name="ZIP_CODE" Type="nvarchar(max)" />
+          <Property Name="PHONE_NBR" Type="nvarchar(max)" />
+          <Property Name="FAX_NBR" Type="nvarchar(max)" />
+          <Property Name="LATITUDE" Type="nvarchar(max)" />
+          <Property Name="LONGITUDE" Type="nvarchar(max)" />
+          <Property Name="HOURS1" Type="nvarchar(max)" />
+          <Property Name="HOURS2" Type="nvarchar(max)" />
+          <Property Name="OPENPRACTICE_DSC" Type="nvarchar(max)" />
+          <Property Name="OPENLATE_FLG" Type="nvarchar(max)" />
+          <Property Name="OPENEARLY_FLG" Type="nvarchar(max)" />
+          <Property Name="OPENWEEKEND_FLG" Type="nvarchar(max)" />
+          <Property Name="AFTERHOURSINSTRUCTIONS" Type="nvarchar(max)" />
+          <Property Name="NOT_USED" Type="nvarchar(max)" />
+          <Property Name="FACILITY_ID" Type="nvarchar(max)" />
+          <Property Name="ADA_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOCATIONINSURANCE">
+          <Key>
+            <PropertyRef Name="LOCATIONINSURANCE_ID" />
+          </Key>
+          <Property Name="LOCATIONINSURANCE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="ADDRESS_SEQ" Type="nvarchar(max)" />
+          <Property Name="PLAN_CODE" Type="nvarchar(max)" />
+          <Property Name="PLAN_NM" Type="nvarchar(max)" />
+          <Property Name="EXCEPTIONS" Type="nvarchar(max)" />
+          <Property Name="PCP_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LOCATIONINSURANCE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.LOCATIONINSURANCE_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LOCATIONINSURANCE_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="ADDRESS_SEQ" />
+            <PropertyRef Name="PLAN_CODE" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="ADDRESS_SEQ" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PLAN_CODE" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PLAN_NM" Type="nvarchar(max)" />
+          <Property Name="EXCEPTIONS" Type="nvarchar(max)" />
+          <Property Name="PCP_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP">
+          <Key>
+            <PropertyRef Name="MEMBERSHIP_ID" />
+          </Key>
+          <Property Name="MEMBERSHIP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="PROF_DSC" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.MEMBERSHIP_RAW' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MEMBERSHIP_RAW">
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="PROF_DSC" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="PATIENTEDUCATION">
+          <Key>
+            <PropertyRef Name="PATIENTEDUCATION_ID" />
+          </Key>
+          <Property Name="PATIENTEDUCATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="TITLE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PATIENTEDUCATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.PATIENTEDUCATION_RAW' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PATIENTEDUCATION_RAW">
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="TITLE" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="PROVIDER">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="FIRST_NM" Type="nvarchar(max)" />
+          <Property Name="MIDDLE_NM" Type="nvarchar(max)" />
+          <Property Name="LAST_NM" Type="nvarchar(max)" />
+          <Property Name="TITLE_NM" Type="nvarchar(max)" />
+          <Property Name="INTERMOUNTAIN_FLG" Type="nvarchar(max)" />
+          <Property Name="IMGPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="MYHEALTHPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="SELECTHEALTH_FLG" Type="nvarchar(max)" />
+          <Property Name="SH_IDAHOFLG" Type="nvarchar(max)" />
+          <Property Name="STLUKESPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="GENDER" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL" Type="nvarchar(max)" />
+          <Property Name="VIDEO_URL" Type="nvarchar(max)" />
+          <Property Name="ACCEPTINGNEWPATIENTS_FLG" Type="nvarchar(max)" />
+          <Property Name="PRACTICES_OB" Type="nvarchar(max)" />
+          <Property Name="BIO_INTERESTS" Type="nvarchar(max)" />
+          <Property Name="PROFESSIONAL_POSITIONS" Type="nvarchar(max)" />
+          <Property Name="PRACTICE_FOCUS" Type="nvarchar(max)" />
+          <Property Name="NPI" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PROVIDER_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.PROVIDER_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PROVIDER_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="FIRST_NM" Type="nvarchar(max)" />
+          <Property Name="MIDDLE_NM" Type="nvarchar(max)" />
+          <Property Name="LAST_NM" Type="nvarchar(max)" />
+          <Property Name="TITLE_NM" Type="nvarchar(max)" />
+          <Property Name="INTERMOUNTAIN_FLG" Type="nvarchar(max)" />
+          <Property Name="IMGPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="MYHEALTHPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="SELECTHEALTH_FLG" Type="nvarchar(max)" />
+          <Property Name="SH_IDAHOFLG" Type="nvarchar(max)" />
+          <Property Name="STLUKESPROVIDER_FLG" Type="nvarchar(max)" />
+          <Property Name="GENDER" Type="nvarchar(max)" />
+          <Property Name="PHOTO_URL" Type="nvarchar(max)" />
+          <Property Name="VIDEO_URL" Type="nvarchar(max)" />
+          <Property Name="ACCEPTINGNEWPATIENTS_FLG" Type="nvarchar(max)" />
+          <Property Name="PRACTICES_OB" Type="nvarchar(max)" />
+          <Property Name="BIO_INTERESTS" Type="nvarchar(max)" />
+          <Property Name="PROFESSIONAL_POSITIONS" Type="nvarchar(max)" />
+          <Property Name="PRACTICE_FOCUS" Type="nvarchar(max)" />
+          <Property Name="NPI" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_COUNTY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_COUNTY">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="County" />
+            <PropertyRef Name="Covered" />
+            <PropertyRef Name="CoveredNextYear" />
+            <PropertyRef Name="Brand" />
+          </Key>
+          <Property Name="CountyId" Type="int" Nullable="false" />
+          <Property Name="County" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Covered" Type="bit" Nullable="false" />
+          <Property Name="CoveredNextYear" Type="bit" Nullable="false" />
+          <Property Name="State" Type="nchar" MaxLength="2" />
+          <Property Name="Brand" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="ServiceArea" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_COUNTYPLANINTERSECTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_COUNTYPLANINTERSECTION">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="CountyId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_OPTIONALBENEFITS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_OPTIONALBENEFITS">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="PlanHeader" />
+            <PropertyRef Name="BenefitDescription" />
+            <PropertyRef Name="ServiceArea" />
+            <PropertyRef Name="Premium" />
+            <PropertyRef Name="DentalDeductible" />
+            <PropertyRef Name="AnnualMedicalDeductible" />
+            <PropertyRef Name="OralExaminations" />
+            <PropertyRef Name="Cleanings" />
+            <PropertyRef Name="XRays" />
+            <PropertyRef Name="Basic" />
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Orthodontics" />
+            <PropertyRef Name="PlusPlanHeader" />
+            <PropertyRef Name="PremiumPlus" />
+            <PropertyRef Name="EyewearBenefit" />
+            <PropertyRef Name="DentalDeductiblePlus" />
+            <PropertyRef Name="AnnualMaximumPlanPayment" />
+            <PropertyRef Name="OralExaminationsPlus" />
+            <PropertyRef Name="CleaningsPlus" />
+            <PropertyRef Name="XRaysPlus" />
+            <PropertyRef Name="BasicPlus" />
+            <PropertyRef Name="MajorPlus" />
+            <PropertyRef Name="OrthodonticsPlus" />
+            <PropertyRef Name="PlanDescription" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="PlanHeader" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BenefitDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ServiceArea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Premium" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DentalDeductible" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AnnualMedicalDeductible" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="OralExaminations" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Cleanings" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="XRays" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Basic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Major" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Orthodontics" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlusPlanHeader" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PremiumPlus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EyewearBenefit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DentalDeductiblePlus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AnnualMaximumPlanPayment" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="OralExaminationsPlus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CleaningsPlus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="XRaysPlus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BasicPlus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MajorPlus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrthodonticsPlus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlanDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_PLAN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_PLAN">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SpecialistVisits" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Id" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="PreviousPremium" Type="int" />
+          <Property Name="Premium" Type="int" />
+          <Property Name="MonthlyPremium" Type="int" />
+          <Property Name="AnnualDeductible" Type="int" />
+          <Property Name="MaxOutOfPocket" Type="int" />
+          <Property Name="PrimaryCareVisits" Type="int" />
+          <Property Name="SpecialistVisits" Type="int" Nullable="false" />
+          <Property Name="PreventativeServices" Type="int" />
+          <Property Name="InPatientHospitalization" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutpatientSurgery" Type="int" />
+          <Property Name="HearingAidBenefit" Type="nvarchar" MaxLength="200" />
+          <Property Name="ErVisit" Type="int" />
+          <Property Name="LabTests" Type="int" />
+          <Property Name="Xray" Type="int" />
+          <Property Name="AnnualRXDeductible" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier1" Type="int" />
+          <Property Name="Tier2" Type="int" />
+          <Property Name="Tier3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier5" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnnualRxDeductibleMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier1Mail" Type="int" />
+          <Property Name="Tier2Mail" Type="int" />
+          <Property Name="Tier3Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier4Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tier5Mail" Type="nchar" MaxLength="3" />
+          <Property Name="SummaryBenefitsURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="SummaryBenefitsSpanishURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="PremiumSummaryURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="EvidenceCoverageSpanishURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="EvidenceCoverageURL" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.SH_SEMINAR' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SH_SEMINAR">
+          <Property Name="EventDate" Type="date" />
+          <Property Name="EventTime" Type="char" MaxLength="8" />
+          <Property Name="VenueName" Type="nvarchar" MaxLength="100" />
+          <Property Name="VenueAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="VenueCity" Type="nvarchar" MaxLength="20" />
+          <Property Name="VenueState" Type="char" MaxLength="2" />
+          <Property Name="VenueZipCode" Type="int" />
+          <Property Name="Counties" Type="nvarchar" MaxLength="150" />
+          <Property Name="URL" Type="nvarchar(max)" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_ZIPCODE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_ZIPCODE">
+          <Key>
+            <PropertyRef Name="ZipcodeId" />
+            <PropertyRef Name="Zipcode" />
+          </Key>
+          <Property Name="ZipcodeId" Type="int" Nullable="false" />
+          <Property Name="Zipcode" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SH_ZIPCODECOUNTYINTERSECTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SH_ZIPCODECOUNTYINTERSECTION">
+          <Key>
+            <PropertyRef Name="ZipcodeId" />
+            <PropertyRef Name="CountyId" />
+          </Key>
+          <Property Name="ZipcodeId" Type="int" Nullable="false" />
+          <Property Name="CountyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SITECORELOCATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NCID" Type="nvarchar(max)" />
+          <Property Name="SITECORE_GUID" Type="nvarchar(max)" />
+          <Property Name="WEBSITE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SPECIALTY">
+          <Key>
+            <PropertyRef Name="SPECIALTY_ID" />
+          </Key>
+          <Property Name="SPECIALTY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="CREDENTIALING_DSC" Type="nvarchar(max)" />
+          <Property Name="WEB_DSC" Type="nvarchar(max)" />
+          <Property Name="PRIMARY_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SPECIALTY_ACTION">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.SPECIALTY_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SPECIALTY_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="CREDENTIALING_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="CREDENTIALING_DSC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WEB_DSC" Type="nvarchar(max)" />
+          <Property Name="PRIMARY_FLG" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.STEPEXPRESSREGISTRATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="STEPEXPRESSREGISTRATION">
+          <Key>
+            <PropertyRef Name="SCHOOL_NAME" />
+            <PropertyRef Name="DISTRICT" />
+            <PropertyRef Name="SCHOOL_ADDRESS" />
+            <PropertyRef Name="CITY" />
+            <PropertyRef Name="ZIP" />
+            <PropertyRef Name="REGISTRATION_DATETIME" />
+          </Key>
+          <Property Name="SCHOOL_NAME" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SCHOOL_ADDRESS" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ZIP" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SCHOOL_PHONE_NUMBER" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRIVATE_SCHOOL" Type="bit" />
+          <Property Name="PREVIOUSLY_PARTICIPATED" Type="bit" />
+          <Property Name="PRINCIPALS_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="SCHOOL_EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED" Type="bigint" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7" Type="nvarchar" MaxLength="100" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7" Type="nvarchar" MaxLength="150" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7" Type="int" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7" Type="int" />
+          <Property Name="PE_SPECIALIST_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="PE_SPECIALIST_EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="PERSON_SUBMITTING_REGISTRATION" Type="nvarchar" MaxLength="100" />
+          <Property Name="PHONE_NUMBER" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT" Type="bit" />
+          <Property Name="REMAINDER_SOURCE_MAILING" Type="bit" />
+          <Property Name="REMAINDER_SOURCE_EMAIL" Type="bit" />
+          <Property Name="REMAINDER_SOURCE_BILLBOARD" Type="bit" />
+          <Property Name="REMAINDER_SOURCE_OTHER" Type="nvarchar" MaxLength="100" />
+          <Property Name="ADDITIONAL_COMMENTS_NEEDS" Type="nvarchar(max)" />
+          <Property Name="REGISTRATION_DATETIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TRAINING">
+          <Key>
+            <PropertyRef Name="TRAINING_ID" />
+          </Key>
+          <Property Name="TRAINING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="LEVEL_DSC" Type="nvarchar(max)" />
+          <Property Name="DEGREE_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_CITY" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_ST" Type="nvarchar(max)" />
+          <Property Name="PROGRAM_DSC" Type="nvarchar(max)" />
+          <Property Name="START_DT" Type="nvarchar(max)" />
+          <Property Name="END_DT" Type="nvarchar(max)" />
+          <Property Name="GRADUATED_FLG" Type="nvarchar(max)" />
+          <Property Name="ED_SPECIALITY" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TRAINING_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FRG_DBTESTS.dbo.TRAINING_RAW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TRAINING_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="LEVEL_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="LEVEL_DSC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DEGREE_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_DSC" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_CITY" Type="nvarchar(max)" />
+          <Property Name="INSTITUTION_ST" Type="nvarchar(max)" />
+          <Property Name="PROGRAM_DSC" Type="nvarchar(max)" />
+          <Property Name="START_DT" Type="nvarchar(max)" />
+          <Property Name="END_DT" Type="nvarchar(max)" />
+          <Property Name="GRADUATED_FLG" Type="nvarchar(max)" />
+          <Property Name="ED_SPECIALITY" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="WEBRESOURCE">
+          <Key>
+            <PropertyRef Name="WEBRESOURCE_ID" />
+          </Key>
+          <Property Name="WEBRESOURCE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="TITLE" Type="nvarchar(max)" />
+          <Property Name="RESOURCE_DSC" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="WEBRESOURCE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRVDR_ID" Type="int" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ModifiedField" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FRG_DBTESTS.dbo.WEBRESOURCE_RAW' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="WEBRESOURCE_RAW">
+          <Property Name="PRVDR_ID" Type="int" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="TITLE" Type="nvarchar(max)" />
+          <Property Name="RESOURCE_DSC" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="FileImportSettings">
+          <Key>
+            <PropertyRef Name="FileImportSettingID" />
+          </Key>
+          <Property Name="FileImportSettingID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileImportSettingValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DEX_ROW" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEX_ROW_TS" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AWARD_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="AWARD" Type="Self.AWARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="AWARD">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOARDCERTIFICATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="BOARDCERTIFICATION" Type="Self.BOARDCERTIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="BOARDCERTIFICATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEGREE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="DEGREE" Type="Self.DEGREE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="DEGREE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSPAFFILIATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="HOSPAFFILIATION" Type="Self.HOSPAFFILIATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="HOSPAFFILIATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LANGUAGE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LANGUAGE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LOCATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCATIONINSURANCE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LOCATIONINSURANCE" Type="Self.LOCATIONINSURANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LOCATIONINSURANCE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSHIP_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP" Type="Self.MEMBERSHIP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENTEDUCATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="PATIENTEDUCATION" Type="Self.PATIENTEDUCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="PATIENTEDUCATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECIALTY_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="SPECIALTY" Type="Self.SPECIALTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="SPECIALTY">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAINING_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="TRAINING" Type="Self.TRAINING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="TRAINING">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WEBRESOURCE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="WEBRESOURCE" Type="Self.WEBRESOURCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="WEBRESOURCE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FRG_DBTESTSModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="ACC" store:Type="Tables" />
+          <EntitySet Name="ALL_ACTIONS" EntityType="Self.ALL_ACTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AWARD" EntityType="Self.AWARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AWARD_ACTION" EntityType="Self.AWARD_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOARDCERTIFICATION" EntityType="Self.BOARDCERTIFICATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOARDCERTIFICATION_ACTION" EntityType="Self.BOARDCERTIFICATION_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEGREE" EntityType="Self.DEGREE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEGREE_ACTION" EntityType="Self.DEGREE_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOSPAFFILIATION" EntityType="Self.HOSPAFFILIATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOSPAFFILIATION_ACTION" EntityType="Self.HOSPAFFILIATION_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LANGUAGE" EntityType="Self.LANGUAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LANGUAGE_ACTION" EntityType="Self.LANGUAGE_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATION_ACTION" EntityType="Self.LOCATION_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATIONINSURANCE" EntityType="Self.LOCATIONINSURANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATIONINSURANCE_ACTION" EntityType="Self.LOCATIONINSURANCE_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBERSHIP" EntityType="Self.MEMBERSHIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBERSHIP_ACTION" EntityType="Self.MEMBERSHIP_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PATIENTEDUCATION" EntityType="Self.PATIENTEDUCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PATIENTEDUCATION_ACTION" EntityType="Self.PATIENTEDUCATION_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVIDER_ACTION" EntityType="Self.PROVIDER_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SITECORELOCATION" EntityType="Self.SITECORELOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPECIALTY" EntityType="Self.SPECIALTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPECIALTY_ACTION" EntityType="Self.SPECIALTY_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAINING" EntityType="Self.TRAINING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAINING_ACTION" EntityType="Self.TRAINING_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WEBRESOURCE" EntityType="Self.WEBRESOURCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WEBRESOURCE_ACTION" EntityType="Self.WEBRESOURCE_ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileImportSettings" EntityType="Self.FileImportSettings" Schema="UTL" store:Type="Tables" />
+          <EntitySet Name="application_USZipcodes" EntityType="Self.application_USZipcodes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [application_USZipcodes].[Zipcode] AS [Zipcode], 
+    [application_USZipcodes].[Latitude] AS [Latitude], 
+    [application_USZipcodes].[Longitude] AS [Longitude], 
+    [application_USZipcodes].[City] AS [City], 
+    [application_USZipcodes].[State] AS [State]
+    FROM [dbo].[application_USZipcodes] AS [application_USZipcodes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BOARDCERTIFICATION_RAW" EntityType="Self.BOARDCERTIFICATION_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BOARDCERTIFICATION_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [BOARDCERTIFICATION_RAW].[BOARD_DSC] AS [BOARD_DSC], 
+    [BOARDCERTIFICATION_RAW].[AWARD_DT] AS [AWARD_DT], 
+    [BOARDCERTIFICATION_RAW].[REVERIFY_DT] AS [REVERIFY_DT], 
+    [BOARDCERTIFICATION_RAW].[EXPIRE_DT] AS [EXPIRE_DT], 
+    [BOARDCERTIFICATION_RAW].[LIFETIMECERTIFICATION_FLG] AS [LIFETIMECERTIFICATION_FLG]
+    FROM [dbo].[BOARDCERTIFICATION_RAW] AS [BOARDCERTIFICATION_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DEGREE_RAW" EntityType="Self.DEGREE_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DEGREE_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [DEGREE_RAW].[LEVEL_DSC] AS [LEVEL_DSC], 
+    [DEGREE_RAW].[DEGREE_DSC] AS [DEGREE_DSC], 
+    [DEGREE_RAW].[INSTITUTION_DSC] AS [INSTITUTION_DSC], 
+    [DEGREE_RAW].[INSTITUTION_CITY] AS [INSTITUTION_CITY], 
+    [DEGREE_RAW].[INSTITUTION_ST] AS [INSTITUTION_ST], 
+    [DEGREE_RAW].[PROGRAM_DSC] AS [PROGRAM_DSC], 
+    [DEGREE_RAW].[START_DT] AS [START_DT], 
+    [DEGREE_RAW].[END_DT] AS [END_DT], 
+    [DEGREE_RAW].[GRADUATED_FLG] AS [GRADUATED_FLG], 
+    [DEGREE_RAW].[ED_SPECIALITY] AS [ED_SPECIALITY]
+    FROM [dbo].[DEGREE_RAW] AS [DEGREE_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HOSPAFFILIATION_RAW" EntityType="Self.HOSPAFFILIATION_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HOSPAFFILIATION_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [HOSPAFFILIATION_RAW].[HOSPITAL_NM] AS [HOSPITAL_NM], 
+    [HOSPAFFILIATION_RAW].[URL] AS [URL], 
+    [HOSPAFFILIATION_RAW].[SOME_NUMBER] AS [SOME_NUMBER], 
+    [HOSPAFFILIATION_RAW].[FACILITY_ID] AS [FACILITY_ID], 
+    [HOSPAFFILIATION_RAW].[PRIMARY_FLG] AS [PRIMARY_FLG], 
+    [HOSPAFFILIATION_RAW].[FCILITY_STATUS] AS [FCILITY_STATUS]
+    FROM [dbo].[HOSPAFFILIATION_RAW] AS [HOSPAFFILIATION_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOCATION_RAW" EntityType="Self.LOCATION_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOCATION_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [LOCATION_RAW].[ADDRESS_SEQ] AS [ADDRESS_SEQ], 
+    [LOCATION_RAW].[PRIMARYADDRESS_FLG] AS [PRIMARYADDRESS_FLG], 
+    [LOCATION_RAW].[PRACTICE_NM] AS [PRACTICE_NM], 
+    [LOCATION_RAW].[ADDRESS_ONE] AS [ADDRESS_ONE], 
+    [LOCATION_RAW].[ADDRESS_TWO] AS [ADDRESS_TWO], 
+    [LOCATION_RAW].[CITY] AS [CITY], 
+    [LOCATION_RAW].[ST] AS [ST], 
+    [LOCATION_RAW].[COUNTY] AS [COUNTY], 
+    [LOCATION_RAW].[ZIP_CODE] AS [ZIP_CODE], 
+    [LOCATION_RAW].[PHONE_NBR] AS [PHONE_NBR], 
+    [LOCATION_RAW].[FAX_NBR] AS [FAX_NBR], 
+    [LOCATION_RAW].[LATITUDE] AS [LATITUDE], 
+    [LOCATION_RAW].[LONGITUDE] AS [LONGITUDE], 
+    [LOCATION_RAW].[HOURS1] AS [HOURS1], 
+    [LOCATION_RAW].[HOURS2] AS [HOURS2], 
+    [LOCATION_RAW].[OPENPRACTICE_DSC] AS [OPENPRACTICE_DSC], 
+    [LOCATION_RAW].[OPENLATE_FLG] AS [OPENLATE_FLG], 
+    [LOCATION_RAW].[OPENEARLY_FLG] AS [OPENEARLY_FLG], 
+    [LOCATION_RAW].[OPENWEEKEND_FLG] AS [OPENWEEKEND_FLG], 
+    [LOCATION_RAW].[AFTERHOURSINSTRUCTIONS] AS [AFTERHOURSINSTRUCTIONS], 
+    [LOCATION_RAW].[NOT_USED] AS [NOT_USED], 
+    [LOCATION_RAW].[FACILITY_ID] AS [FACILITY_ID], 
+    [LOCATION_RAW].[ADA_FLG] AS [ADA_FLG]
+    FROM [dbo].[LOCATION_RAW] AS [LOCATION_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOCATIONINSURANCE_RAW" EntityType="Self.LOCATIONINSURANCE_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOCATIONINSURANCE_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [LOCATIONINSURANCE_RAW].[ADDRESS_SEQ] AS [ADDRESS_SEQ], 
+    [LOCATIONINSURANCE_RAW].[PLAN_CODE] AS [PLAN_CODE], 
+    [LOCATIONINSURANCE_RAW].[PLAN_NM] AS [PLAN_NM], 
+    [LOCATIONINSURANCE_RAW].[EXCEPTIONS] AS [EXCEPTIONS], 
+    [LOCATIONINSURANCE_RAW].[PCP_FLG] AS [PCP_FLG]
+    FROM [dbo].[LOCATIONINSURANCE_RAW] AS [LOCATIONINSURANCE_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PROVIDER_RAW" EntityType="Self.PROVIDER_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PROVIDER_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [PROVIDER_RAW].[FIRST_NM] AS [FIRST_NM], 
+    [PROVIDER_RAW].[MIDDLE_NM] AS [MIDDLE_NM], 
+    [PROVIDER_RAW].[LAST_NM] AS [LAST_NM], 
+    [PROVIDER_RAW].[TITLE_NM] AS [TITLE_NM], 
+    [PROVIDER_RAW].[INTERMOUNTAIN_FLG] AS [INTERMOUNTAIN_FLG], 
+    [PROVIDER_RAW].[IMGPROVIDER_FLG] AS [IMGPROVIDER_FLG], 
+    [PROVIDER_RAW].[MYHEALTHPROVIDER_FLG] AS [MYHEALTHPROVIDER_FLG], 
+    [PROVIDER_RAW].[SELECTHEALTH_FLG] AS [SELECTHEALTH_FLG], 
+    [PROVIDER_RAW].[SH_IDAHOFLG] AS [SH_IDAHOFLG], 
+    [PROVIDER_RAW].[STLUKESPROVIDER_FLG] AS [STLUKESPROVIDER_FLG], 
+    [PROVIDER_RAW].[GENDER] AS [GENDER], 
+    [PROVIDER_RAW].[PHOTO_URL] AS [PHOTO_URL], 
+    [PROVIDER_RAW].[VIDEO_URL] AS [VIDEO_URL], 
+    [PROVIDER_RAW].[ACCEPTINGNEWPATIENTS_FLG] AS [ACCEPTINGNEWPATIENTS_FLG], 
+    [PROVIDER_RAW].[PRACTICES_OB] AS [PRACTICES_OB], 
+    [PROVIDER_RAW].[BIO_INTERESTS] AS [BIO_INTERESTS], 
+    [PROVIDER_RAW].[PROFESSIONAL_POSITIONS] AS [PROFESSIONAL_POSITIONS], 
+    [PROVIDER_RAW].[PRACTICE_FOCUS] AS [PRACTICE_FOCUS], 
+    [PROVIDER_RAW].[NPI] AS [NPI]
+    FROM [dbo].[PROVIDER_RAW] AS [PROVIDER_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_COUNTY" EntityType="Self.SH_COUNTY" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_COUNTY].[CountyId] AS [CountyId], 
+    [SH_COUNTY].[County] AS [County], 
+    [SH_COUNTY].[Covered] AS [Covered], 
+    [SH_COUNTY].[CoveredNextYear] AS [CoveredNextYear], 
+    [SH_COUNTY].[State] AS [State], 
+    [SH_COUNTY].[Brand] AS [Brand], 
+    [SH_COUNTY].[ServiceArea] AS [ServiceArea]
+    FROM [dbo].[SH_COUNTY] AS [SH_COUNTY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_COUNTYPLANINTERSECTION" EntityType="Self.SH_COUNTYPLANINTERSECTION" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_COUNTYPLANINTERSECTION].[CountyId] AS [CountyId], 
+    [SH_COUNTYPLANINTERSECTION].[PlanId] AS [PlanId]
+    FROM [dbo].[SH_COUNTYPLANINTERSECTION] AS [SH_COUNTYPLANINTERSECTION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_OPTIONALBENEFITS" EntityType="Self.SH_OPTIONALBENEFITS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_OPTIONALBENEFITS].[PlanId] AS [PlanId], 
+    [SH_OPTIONALBENEFITS].[PlanHeader] AS [PlanHeader], 
+    [SH_OPTIONALBENEFITS].[BenefitDescription] AS [BenefitDescription], 
+    [SH_OPTIONALBENEFITS].[ServiceArea] AS [ServiceArea], 
+    [SH_OPTIONALBENEFITS].[Premium] AS [Premium], 
+    [SH_OPTIONALBENEFITS].[DentalDeductible] AS [DentalDeductible], 
+    [SH_OPTIONALBENEFITS].[AnnualMedicalDeductible] AS [AnnualMedicalDeductible], 
+    [SH_OPTIONALBENEFITS].[OralExaminations] AS [OralExaminations], 
+    [SH_OPTIONALBENEFITS].[Cleanings] AS [Cleanings], 
+    [SH_OPTIONALBENEFITS].[XRays] AS [XRays], 
+    [SH_OPTIONALBENEFITS].[Basic] AS [Basic], 
+    [SH_OPTIONALBENEFITS].[Major] AS [Major], 
+    [SH_OPTIONALBENEFITS].[Orthodontics] AS [Orthodontics], 
+    [SH_OPTIONALBENEFITS].[PlusPlanHeader] AS [PlusPlanHeader], 
+    [SH_OPTIONALBENEFITS].[PremiumPlus] AS [PremiumPlus], 
+    [SH_OPTIONALBENEFITS].[EyewearBenefit] AS [EyewearBenefit], 
+    [SH_OPTIONALBENEFITS].[DentalDeductiblePlus] AS [DentalDeductiblePlus], 
+    [SH_OPTIONALBENEFITS].[AnnualMaximumPlanPayment] AS [AnnualMaximumPlanPayment], 
+    [SH_OPTIONALBENEFITS].[OralExaminationsPlus] AS [OralExaminationsPlus], 
+    [SH_OPTIONALBENEFITS].[CleaningsPlus] AS [CleaningsPlus], 
+    [SH_OPTIONALBENEFITS].[XRaysPlus] AS [XRaysPlus], 
+    [SH_OPTIONALBENEFITS].[BasicPlus] AS [BasicPlus], 
+    [SH_OPTIONALBENEFITS].[MajorPlus] AS [MajorPlus], 
+    [SH_OPTIONALBENEFITS].[OrthodonticsPlus] AS [OrthodonticsPlus], 
+    [SH_OPTIONALBENEFITS].[PlanDescription] AS [PlanDescription]
+    FROM [dbo].[SH_OPTIONALBENEFITS] AS [SH_OPTIONALBENEFITS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_PLAN" EntityType="Self.SH_PLAN" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_PLAN].[PlanId] AS [PlanId], 
+    [SH_PLAN].[Name] AS [Name], 
+    [SH_PLAN].[Year] AS [Year], 
+    [SH_PLAN].[Id] AS [Id], 
+    [SH_PLAN].[PreviousPremium] AS [PreviousPremium], 
+    [SH_PLAN].[Premium] AS [Premium], 
+    [SH_PLAN].[MonthlyPremium] AS [MonthlyPremium], 
+    [SH_PLAN].[AnnualDeductible] AS [AnnualDeductible], 
+    [SH_PLAN].[MaxOutOfPocket] AS [MaxOutOfPocket], 
+    [SH_PLAN].[PrimaryCareVisits] AS [PrimaryCareVisits], 
+    [SH_PLAN].[SpecialistVisits] AS [SpecialistVisits], 
+    [SH_PLAN].[PreventativeServices] AS [PreventativeServices], 
+    [SH_PLAN].[InPatientHospitalization] AS [InPatientHospitalization], 
+    [SH_PLAN].[OutpatientSurgery] AS [OutpatientSurgery], 
+    [SH_PLAN].[HearingAidBenefit] AS [HearingAidBenefit], 
+    [SH_PLAN].[ErVisit] AS [ErVisit], 
+    [SH_PLAN].[LabTests] AS [LabTests], 
+    [SH_PLAN].[Xray] AS [Xray], 
+    [SH_PLAN].[AnnualRXDeductible] AS [AnnualRXDeductible], 
+    [SH_PLAN].[Tier1] AS [Tier1], 
+    [SH_PLAN].[Tier2] AS [Tier2], 
+    [SH_PLAN].[Tier3] AS [Tier3], 
+    [SH_PLAN].[Tier4] AS [Tier4], 
+    [SH_PLAN].[Tier5] AS [Tier5], 
+    [SH_PLAN].[AnnualRxDeductibleMail] AS [AnnualRxDeductibleMail], 
+    [SH_PLAN].[Tier1Mail] AS [Tier1Mail], 
+    [SH_PLAN].[Tier2Mail] AS [Tier2Mail], 
+    [SH_PLAN].[Tier3Mail] AS [Tier3Mail], 
+    [SH_PLAN].[Tier4Mail] AS [Tier4Mail], 
+    [SH_PLAN].[Tier5Mail] AS [Tier5Mail], 
+    [SH_PLAN].[SummaryBenefitsURL] AS [SummaryBenefitsURL], 
+    [SH_PLAN].[SummaryBenefitsSpanishURL] AS [SummaryBenefitsSpanishURL], 
+    [SH_PLAN].[PremiumSummaryURL] AS [PremiumSummaryURL], 
+    [SH_PLAN].[EvidenceCoverageSpanishURL] AS [EvidenceCoverageSpanishURL], 
+    [SH_PLAN].[EvidenceCoverageURL] AS [EvidenceCoverageURL]
+    FROM [dbo].[SH_PLAN] AS [SH_PLAN]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_ZIPCODE" EntityType="Self.SH_ZIPCODE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_ZIPCODE].[ZipcodeId] AS [ZipcodeId], 
+    [SH_ZIPCODE].[Zipcode] AS [Zipcode]
+    FROM [dbo].[SH_ZIPCODE] AS [SH_ZIPCODE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SH_ZIPCODECOUNTYINTERSECTION" EntityType="Self.SH_ZIPCODECOUNTYINTERSECTION" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SH_ZIPCODECOUNTYINTERSECTION].[ZipcodeId] AS [ZipcodeId], 
+    [SH_ZIPCODECOUNTYINTERSECTION].[CountyId] AS [CountyId]
+    FROM [dbo].[SH_ZIPCODECOUNTYINTERSECTION] AS [SH_ZIPCODECOUNTYINTERSECTION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SPECIALTY_RAW" EntityType="Self.SPECIALTY_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SPECIALTY_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [SPECIALTY_RAW].[CREDENTIALING_DSC] AS [CREDENTIALING_DSC], 
+    [SPECIALTY_RAW].[WEB_DSC] AS [WEB_DSC], 
+    [SPECIALTY_RAW].[PRIMARY_FLG] AS [PRIMARY_FLG]
+    FROM [dbo].[SPECIALTY_RAW] AS [SPECIALTY_RAW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="STEPEXPRESSREGISTRATION" EntityType="Self.STEPEXPRESSREGISTRATION" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [STEPEXPRESSREGISTRATION].[SCHOOL_NAME] AS [SCHOOL_NAME], 
+    [STEPEXPRESSREGISTRATION].[DISTRICT] AS [DISTRICT], 
+    [STEPEXPRESSREGISTRATION].[SCHOOL_ADDRESS] AS [SCHOOL_ADDRESS], 
+    [STEPEXPRESSREGISTRATION].[CITY] AS [CITY], 
+    [STEPEXPRESSREGISTRATION].[ZIP] AS [ZIP], 
+    [STEPEXPRESSREGISTRATION].[SCHOOL_PHONE_NUMBER] AS [SCHOOL_PHONE_NUMBER], 
+    [STEPEXPRESSREGISTRATION].[PRIVATE_SCHOOL] AS [PRIVATE_SCHOOL], 
+    [STEPEXPRESSREGISTRATION].[PREVIOUSLY_PARTICIPATED] AS [PREVIOUSLY_PARTICIPATED], 
+    [STEPEXPRESSREGISTRATION].[PRINCIPALS_NAME] AS [PRINCIPALS_NAME], 
+    [STEPEXPRESSREGISTRATION].[SCHOOL_EMAIL] AS [SCHOOL_EMAIL], 
+    [STEPEXPRESSREGISTRATION].[NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED] AS [NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7] AS [FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7] AS [FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7], 
+    [STEPEXPRESSREGISTRATION].[FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7] AS [FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7], 
+    [STEPEXPRESSREGISTRATION].[PE_SPECIALIST_NAME] AS [PE_SPECIALIST_NAME], 
+    [STEPEXPRESSREGISTRATION].[PE_SPECIALIST_EMAIL] AS [PE_SPECIALIST_EMAIL], 
+    [STEPEXPRESSREGISTRATION].[PERSON_SUBMITTING_REGISTRATION] AS [PERSON_SUBMITTING_REGISTRATION], 
+    [STEPEXPRESSREGISTRATION].[PHONE_NUMBER] AS [PHONE_NUMBER], 
+    [STEPEXPRESSREGISTRATION].[EMAIL] AS [EMAIL], 
+    [STEPEXPRESSREGISTRATION].[REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT] AS [REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT], 
+    [STEPEXPRESSREGISTRATION].[REMAINDER_SOURCE_MAILING] AS [REMAINDER_SOURCE_MAILING], 
+    [STEPEXPRESSREGISTRATION].[REMAINDER_SOURCE_EMAIL] AS [REMAINDER_SOURCE_EMAIL], 
+    [STEPEXPRESSREGISTRATION].[REMAINDER_SOURCE_BILLBOARD] AS [REMAINDER_SOURCE_BILLBOARD], 
+    [STEPEXPRESSREGISTRATION].[REMAINDER_SOURCE_OTHER] AS [REMAINDER_SOURCE_OTHER], 
+    [STEPEXPRESSREGISTRATION].[ADDITIONAL_COMMENTS_NEEDS] AS [ADDITIONAL_COMMENTS_NEEDS], 
+    [STEPEXPRESSREGISTRATION].[REGISTRATION_DATETIME] AS [REGISTRATION_DATETIME]
+    FROM [dbo].[STEPEXPRESSREGISTRATION] AS [STEPEXPRESSREGISTRATION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TRAINING_RAW" EntityType="Self.TRAINING_RAW" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TRAINING_RAW].[PRVDR_ID] AS [PRVDR_ID], 
+    [TRAINING_RAW].[LEVEL_DSC] AS [LEVEL_DSC], 
+    [TRAINING_RAW].[DEGREE_DSC] AS [DEGREE_DSC], 
+    [TRAINING_RAW].[INSTITUTION_DSC] AS [INSTITUTION_DSC], 
+    [TRAINING_RAW].[INSTITUTION_CITY] AS [INSTITUTION_CITY], 
+    [TRAINING_RAW].[INSTITUTION_ST] AS [INSTITUTION_ST], 
+    [TRAINING_RAW].[PROGRAM_DSC] AS [PROGRAM_DSC], 
+    [TRAINING_RAW].[START_DT] AS [START_DT], 
+    [TRAINING_RAW].[END_DT] AS [END_DT], 
+    [TRAINING_RAW].[GRADUATED_FLG] AS [GRADUATED_FLG], 
+    [TRAINING_RAW].[ED_SPECIALITY] AS [ED_SPECIALITY]
+    FROM [dbo].[TRAINING_RAW] AS [TRAINING_RAW]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AWARD_PROVIDER" Association="Self.FK_AWARD_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="AWARD" EntitySet="AWARD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOARDCERTIFICATION_PROVIDER" Association="Self.FK_BOARDCERTIFICATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="BOARDCERTIFICATION" EntitySet="BOARDCERTIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEGREE_PROVIDER" Association="Self.FK_DEGREE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="DEGREE" EntitySet="DEGREE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSPAFFILIATION_PROVIDER" Association="Self.FK_HOSPAFFILIATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="HOSPAFFILIATION" EntitySet="HOSPAFFILIATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LANGUAGE_PROVIDER" Association="Self.FK_LANGUAGE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCATION_PROVIDER" Association="Self.FK_LOCATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="LOCATION" EntitySet="LOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCATIONINSURANCE_PROVIDER" Association="Self.FK_LOCATIONINSURANCE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="LOCATIONINSURANCE" EntitySet="LOCATIONINSURANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSHIP_PROVIDER" Association="Self.FK_MEMBERSHIP_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="MEMBERSHIP" EntitySet="MEMBERSHIP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENTEDUCATION_PROVIDER" Association="Self.FK_PATIENTEDUCATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="PATIENTEDUCATION" EntitySet="PATIENTEDUCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECIALTY_PROVIDER" Association="Self.FK_SPECIALTY_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="SPECIALTY" EntitySet="SPECIALTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAINING_PROVIDER" Association="Self.FK_TRAINING_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="TRAINING" EntitySet="TRAINING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WEBRESOURCE_PROVIDER" Association="Self.FK_WEBRESOURCE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDER" />
+            <End Role="WEBRESOURCE" EntitySet="WEBRESOURCE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FRG_DBTESTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ALL_ACTIONS">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AWARD">
+          <Key>
+            <PropertyRef Name="AWARD_ID" />
+          </Key>
+          <Property Name="AWARD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="FCILITY_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AWARD_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AWARD_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EFFECTIVE_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRE_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_AWARD_PROVIDER" FromRole="AWARD" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="AWARD_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BOARDCERTIFICATION">
+          <Key>
+            <PropertyRef Name="BOARDCERTIFICATION_ID" />
+          </Key>
+          <Property Name="BOARDCERTIFICATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="BOARD_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AWARD_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REVERIFY_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRE_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LIFETIMECERTIFICATION_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_BOARDCERTIFICATION_PROVIDER" FromRole="BOARDCERTIFICATION" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="BOARDCERTIFICATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DEGREE">
+          <Key>
+            <PropertyRef Name="DEGREE_ID" />
+          </Key>
+          <Property Name="DEGREE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="LEVEL_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DEGREE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROGRAM_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="END_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GRADUATED_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ED_SPECIALITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_DEGREE_PROVIDER" FromRole="DEGREE" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="DEGREE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOSPAFFILIATION">
+          <Key>
+            <PropertyRef Name="HOSPAFFILIATION_ID" />
+          </Key>
+          <Property Name="HOSPAFFILIATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="HOSPITAL_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FACILITY_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRIMARY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FCILITY_STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_HOSPAFFILIATION_PROVIDER" FromRole="HOSPAFFILIATION" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="HOSPAFFILIATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="LANGUAGE_ID" />
+          </Key>
+          <Property Name="LANGUAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="LANGUAGE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_LANGUAGE_PROVIDER" FromRole="LANGUAGE" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="LANGUAGE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="ADDRESS_SEQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRIMARYADDRESS_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_ONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_TWO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZIP_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE_NBR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FAX_NBR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOURS1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOURS2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENPRACTICE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENLATE_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENEARLY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENWEEKEND_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AFTERHOURSINSTRUCTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FACILITY_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADA_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_LOCATION_PROVIDER" FromRole="LOCATION" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="LOCATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOCATIONINSURANCE">
+          <Key>
+            <PropertyRef Name="LOCATIONINSURANCE_ID" />
+          </Key>
+          <Property Name="LOCATIONINSURANCE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="ADDRESS_SEQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLAN_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLAN_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EXCEPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PCP_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_LOCATIONINSURANCE_PROVIDER" FromRole="LOCATIONINSURANCE" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="LOCATIONINSURANCE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP">
+          <Key>
+            <PropertyRef Name="MEMBERSHIP_ID" />
+          </Key>
+          <Property Name="MEMBERSHIP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="PROF_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_MEMBERSHIP_PROVIDER" FromRole="MEMBERSHIP" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PATIENTEDUCATION">
+          <Key>
+            <PropertyRef Name="PATIENTEDUCATION_ID" />
+          </Key>
+          <Property Name="PATIENTEDUCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_PATIENTEDUCATION_PROVIDER" FromRole="PATIENTEDUCATION" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="PATIENTEDUCATION_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PROVIDER">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="FIRST_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MIDDLE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INTERMOUNTAIN_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMGPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MYHEALTHPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SELECTHEALTH_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SH_IDAHOFLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STLUKESPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VIDEO_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACCEPTINGNEWPATIENTS_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICES_OB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BIO_INTERESTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROFESSIONAL_POSITIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICE_FOCUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NPI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AWARDs" Relationship="Self.FK_AWARD_PROVIDER" FromRole="PROVIDER" ToRole="AWARD" />
+          <NavigationProperty Name="BOARDCERTIFICATIONs" Relationship="Self.FK_BOARDCERTIFICATION_PROVIDER" FromRole="PROVIDER" ToRole="BOARDCERTIFICATION" />
+          <NavigationProperty Name="DEGREEs" Relationship="Self.FK_DEGREE_PROVIDER" FromRole="PROVIDER" ToRole="DEGREE" />
+          <NavigationProperty Name="HOSPAFFILIATIONs" Relationship="Self.FK_HOSPAFFILIATION_PROVIDER" FromRole="PROVIDER" ToRole="HOSPAFFILIATION" />
+          <NavigationProperty Name="LANGUAGEs" Relationship="Self.FK_LANGUAGE_PROVIDER" FromRole="PROVIDER" ToRole="LANGUAGE" />
+          <NavigationProperty Name="LOCATIONs" Relationship="Self.FK_LOCATION_PROVIDER" FromRole="PROVIDER" ToRole="LOCATION" />
+          <NavigationProperty Name="LOCATIONINSURANCEs" Relationship="Self.FK_LOCATIONINSURANCE_PROVIDER" FromRole="PROVIDER" ToRole="LOCATIONINSURANCE" />
+          <NavigationProperty Name="MEMBERSHIPs" Relationship="Self.FK_MEMBERSHIP_PROVIDER" FromRole="PROVIDER" ToRole="MEMBERSHIP" />
+          <NavigationProperty Name="PATIENTEDUCATIONs" Relationship="Self.FK_PATIENTEDUCATION_PROVIDER" FromRole="PROVIDER" ToRole="PATIENTEDUCATION" />
+          <NavigationProperty Name="SPECIALTies" Relationship="Self.FK_SPECIALTY_PROVIDER" FromRole="PROVIDER" ToRole="SPECIALTY" />
+          <NavigationProperty Name="TRAININGs" Relationship="Self.FK_TRAINING_PROVIDER" FromRole="PROVIDER" ToRole="TRAINING" />
+          <NavigationProperty Name="WEBRESOURCEs" Relationship="Self.FK_WEBRESOURCE_PROVIDER" FromRole="PROVIDER" ToRole="WEBRESOURCE" />
+        </EntityType>
+        <EntityType Name="PROVIDER_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SITECORELOCATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NCID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SITECORE_GUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WEBSITE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SPECIALTY">
+          <Key>
+            <PropertyRef Name="SPECIALTY_ID" />
+          </Key>
+          <Property Name="SPECIALTY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="CREDENTIALING_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WEB_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRIMARY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_SPECIALTY_PROVIDER" FromRole="SPECIALTY" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="SPECIALTY_ACTION">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRAINING">
+          <Key>
+            <PropertyRef Name="TRAINING_ID" />
+          </Key>
+          <Property Name="TRAINING_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="LEVEL_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DEGREE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROGRAM_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="END_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GRADUATED_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ED_SPECIALITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_TRAINING_PROVIDER" FromRole="TRAINING" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="TRAINING_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WEBRESOURCE">
+          <Key>
+            <PropertyRef Name="WEBRESOURCE_ID" />
+          </Key>
+          <Property Name="WEBRESOURCE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RESOURCE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROVIDER" Relationship="Self.FK_WEBRESOURCE_PROVIDER" FromRole="WEBRESOURCE" ToRole="PROVIDER" />
+        </EntityType>
+        <EntityType Name="WEBRESOURCE_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedField" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FileImportSetting">
+          <Key>
+            <PropertyRef Name="FileImportSettingID" />
+          </Key>
+          <Property Name="FileImportSettingID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileImportSettingValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEX_ROW" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEX_ROW_TS" Type="DateTimeOffset" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="application_USZipcodes">
+          <Key>
+            <PropertyRef Name="Zipcode" />
+            <PropertyRef Name="Latitude" />
+            <PropertyRef Name="Longitude" />
+          </Key>
+          <Property Name="Zipcode" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BOARDCERTIFICATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="BOARD_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AWARD_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REVERIFY_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRE_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LIFETIMECERTIFICATION_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DEGREE_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="LEVEL_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="LEVEL_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEGREE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROGRAM_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="END_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GRADUATED_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ED_SPECIALITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOSPAFFILIATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="HOSPITAL_NM" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="HOSPITAL_NM" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOME_NUMBER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FACILITY_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRIMARY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FCILITY_STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOCATION_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="ADDRESS_SEQ" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADDRESS_SEQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PRIMARYADDRESS_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_ONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_TWO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZIP_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE_NBR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FAX_NBR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOURS1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOURS2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENPRACTICE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENLATE_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENEARLY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OPENWEEKEND_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AFTERHOURSINSTRUCTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NOT_USED" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FACILITY_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADA_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOCATIONINSURANCE_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="ADDRESS_SEQ" />
+            <PropertyRef Name="PLAN_CODE" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADDRESS_SEQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLAN_CODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLAN_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EXCEPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PCP_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PROVIDER_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="FIRST_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MIDDLE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE_NM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INTERMOUNTAIN_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMGPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MYHEALTHPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SELECTHEALTH_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SH_IDAHOFLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STLUKESPROVIDER_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHOTO_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VIDEO_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACCEPTINGNEWPATIENTS_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICES_OB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BIO_INTERESTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROFESSIONAL_POSITIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRACTICE_FOCUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NPI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SH_COUNTY">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="County" />
+            <PropertyRef Name="Covered" />
+            <PropertyRef Name="CoveredNextYear" />
+            <PropertyRef Name="Brand" />
+          </Key>
+          <Property Name="CountyId" Type="Int32" Nullable="false" />
+          <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Covered" Type="Boolean" Nullable="false" />
+          <Property Name="CoveredNextYear" Type="Boolean" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ServiceArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SH_COUNTYPLANINTERSECTION">
+          <Key>
+            <PropertyRef Name="CountyId" />
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="CountyId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SH_OPTIONALBENEFITS">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="PlanHeader" />
+            <PropertyRef Name="BenefitDescription" />
+            <PropertyRef Name="ServiceArea" />
+            <PropertyRef Name="Premium" />
+            <PropertyRef Name="DentalDeductible" />
+            <PropertyRef Name="AnnualMedicalDeductible" />
+            <PropertyRef Name="OralExaminations" />
+            <PropertyRef Name="Cleanings" />
+            <PropertyRef Name="XRays" />
+            <PropertyRef Name="Basic" />
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Orthodontics" />
+            <PropertyRef Name="PlusPlanHeader" />
+            <PropertyRef Name="PremiumPlus" />
+            <PropertyRef Name="EyewearBenefit" />
+            <PropertyRef Name="DentalDeductiblePlus" />
+            <PropertyRef Name="AnnualMaximumPlanPayment" />
+            <PropertyRef Name="OralExaminationsPlus" />
+            <PropertyRef Name="CleaningsPlus" />
+            <PropertyRef Name="XRaysPlus" />
+            <PropertyRef Name="BasicPlus" />
+            <PropertyRef Name="MajorPlus" />
+            <PropertyRef Name="OrthodonticsPlus" />
+            <PropertyRef Name="PlanDescription" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="PlanHeader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BenefitDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Premium" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DentalDeductible" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnnualMedicalDeductible" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OralExaminations" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cleanings" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="XRays" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Basic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Major" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Orthodontics" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlusPlanHeader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PremiumPlus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EyewearBenefit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DentalDeductiblePlus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnnualMaximumPlanPayment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OralExaminationsPlus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CleaningsPlus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="XRaysPlus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasicPlus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MajorPlus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrthodonticsPlus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlanDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SH_PLAN">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SpecialistVisits" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PreviousPremium" Type="Int32" />
+          <Property Name="Premium" Type="Int32" />
+          <Property Name="MonthlyPremium" Type="Int32" />
+          <Property Name="AnnualDeductible" Type="Int32" />
+          <Property Name="MaxOutOfPocket" Type="Int32" />
+          <Property Name="PrimaryCareVisits" Type="Int32" />
+          <Property Name="SpecialistVisits" Type="Int32" Nullable="false" />
+          <Property Name="PreventativeServices" Type="Int32" />
+          <Property Name="InPatientHospitalization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutpatientSurgery" Type="Int32" />
+          <Property Name="HearingAidBenefit" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ErVisit" Type="Int32" />
+          <Property Name="LabTests" Type="Int32" />
+          <Property Name="Xray" Type="Int32" />
+          <Property Name="AnnualRXDeductible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier1" Type="Int32" />
+          <Property Name="Tier2" Type="Int32" />
+          <Property Name="Tier3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnnualRxDeductibleMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier1Mail" Type="Int32" />
+          <Property Name="Tier2Mail" Type="Int32" />
+          <Property Name="Tier3Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier4Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tier5Mail" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SummaryBenefitsURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SummaryBenefitsSpanishURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PremiumSummaryURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EvidenceCoverageSpanishURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EvidenceCoverageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SH_ZIPCODE">
+          <Key>
+            <PropertyRef Name="ZipcodeId" />
+            <PropertyRef Name="Zipcode" />
+          </Key>
+          <Property Name="ZipcodeId" Type="Int32" Nullable="false" />
+          <Property Name="Zipcode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SH_ZIPCODECOUNTYINTERSECTION">
+          <Key>
+            <PropertyRef Name="ZipcodeId" />
+            <PropertyRef Name="CountyId" />
+          </Key>
+          <Property Name="ZipcodeId" Type="Int32" Nullable="false" />
+          <Property Name="CountyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPECIALTY_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="CREDENTIALING_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREDENTIALING_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WEB_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRIMARY_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="STEPEXPRESSREGISTRATION">
+          <Key>
+            <PropertyRef Name="SCHOOL_NAME" />
+            <PropertyRef Name="DISTRICT" />
+            <PropertyRef Name="SCHOOL_ADDRESS" />
+            <PropertyRef Name="CITY" />
+            <PropertyRef Name="ZIP" />
+            <PropertyRef Name="REGISTRATION_DATETIME" />
+          </Key>
+          <Property Name="SCHOOL_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SCHOOL_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SCHOOL_PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRIVATE_SCHOOL" Type="Boolean" />
+          <Property Name="PREVIOUSLY_PARTICIPATED" Type="Boolean" />
+          <Property Name="PRINCIPALS_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SCHOOL_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED" Type="Int64" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7" Type="Int32" />
+          <Property Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7" Type="Int32" />
+          <Property Name="PE_SPECIALIST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PE_SPECIALIST_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PERSON_SUBMITTING_REGISTRATION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT" Type="Boolean" />
+          <Property Name="REMAINDER_SOURCE_MAILING" Type="Boolean" />
+          <Property Name="REMAINDER_SOURCE_EMAIL" Type="Boolean" />
+          <Property Name="REMAINDER_SOURCE_BILLBOARD" Type="Boolean" />
+          <Property Name="REMAINDER_SOURCE_OTHER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADDITIONAL_COMMENTS_NEEDS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REGISTRATION_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TRAINING_RAW">
+          <Key>
+            <PropertyRef Name="PRVDR_ID" />
+            <PropertyRef Name="LEVEL_DSC" />
+          </Key>
+          <Property Name="PRVDR_ID" Type="Int32" Nullable="false" />
+          <Property Name="LEVEL_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEGREE_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_CITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INSTITUTION_ST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROGRAM_DSC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="END_DT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GRADUATED_FLG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ED_SPECIALITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AWARD_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="AWARD" Type="Self.AWARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="AWARD">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOARDCERTIFICATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="BOARDCERTIFICATION" Type="Self.BOARDCERTIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="BOARDCERTIFICATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEGREE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="DEGREE" Type="Self.DEGREE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="DEGREE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSPAFFILIATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="HOSPAFFILIATION" Type="Self.HOSPAFFILIATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="HOSPAFFILIATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LANGUAGE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LANGUAGE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LOCATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCATIONINSURANCE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="LOCATIONINSURANCE" Type="Self.LOCATIONINSURANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="LOCATIONINSURANCE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSHIP_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP" Type="Self.MEMBERSHIP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENTEDUCATION_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="PATIENTEDUCATION" Type="Self.PATIENTEDUCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="PATIENTEDUCATION">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPECIALTY_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="SPECIALTY" Type="Self.SPECIALTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="SPECIALTY">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAINING_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="TRAINING" Type="Self.TRAINING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="TRAINING">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WEBRESOURCE_PROVIDER">
+          <End Role="PROVIDER" Type="Self.PROVIDER" Multiplicity="0..1" />
+          <End Role="WEBRESOURCE" Type="Self.WEBRESOURCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVIDER">
+              <PropertyRef Name="PRVDR_ID" />
+            </Principal>
+            <Dependent Role="WEBRESOURCE">
+              <PropertyRef Name="PRVDR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FRG_DBTESTSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="ALL_ACTIONS" EntityType="Self.ALL_ACTIONS" />
+          <EntitySet Name="AWARDs" EntityType="Self.AWARD" />
+          <EntitySet Name="AWARD_ACTION" EntityType="Self.AWARD_ACTION" />
+          <EntitySet Name="BOARDCERTIFICATIONs" EntityType="Self.BOARDCERTIFICATION" />
+          <EntitySet Name="BOARDCERTIFICATION_ACTION" EntityType="Self.BOARDCERTIFICATION_ACTION" />
+          <EntitySet Name="DEGREEs" EntityType="Self.DEGREE" />
+          <EntitySet Name="DEGREE_ACTION" EntityType="Self.DEGREE_ACTION" />
+          <EntitySet Name="HOSPAFFILIATIONs" EntityType="Self.HOSPAFFILIATION" />
+          <EntitySet Name="HOSPAFFILIATION_ACTION" EntityType="Self.HOSPAFFILIATION_ACTION" />
+          <EntitySet Name="LANGUAGEs" EntityType="Self.LANGUAGE" />
+          <EntitySet Name="LANGUAGE_ACTION" EntityType="Self.LANGUAGE_ACTION" />
+          <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+          <EntitySet Name="LOCATION_ACTION" EntityType="Self.LOCATION_ACTION" />
+          <EntitySet Name="LOCATIONINSURANCEs" EntityType="Self.LOCATIONINSURANCE" />
+          <EntitySet Name="LOCATIONINSURANCE_ACTION" EntityType="Self.LOCATIONINSURANCE_ACTION" />
+          <EntitySet Name="MEMBERSHIPs" EntityType="Self.MEMBERSHIP" />
+          <EntitySet Name="MEMBERSHIP_ACTION" EntityType="Self.MEMBERSHIP_ACTION" />
+          <EntitySet Name="PATIENTEDUCATIONs" EntityType="Self.PATIENTEDUCATION" />
+          <EntitySet Name="PATIENTEDUCATION_ACTION" EntityType="Self.PATIENTEDUCATION_ACTION" />
+          <EntitySet Name="PROVIDERs" EntityType="Self.PROVIDER" />
+          <EntitySet Name="PROVIDER_ACTION" EntityType="Self.PROVIDER_ACTION" />
+          <EntitySet Name="SITECORELOCATIONs" EntityType="Self.SITECORELOCATION" />
+          <EntitySet Name="SPECIALTies" EntityType="Self.SPECIALTY" />
+          <EntitySet Name="SPECIALTY_ACTION" EntityType="Self.SPECIALTY_ACTION" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TRAININGs" EntityType="Self.TRAINING" />
+          <EntitySet Name="TRAINING_ACTION" EntityType="Self.TRAINING_ACTION" />
+          <EntitySet Name="WEBRESOURCEs" EntityType="Self.WEBRESOURCE" />
+          <EntitySet Name="WEBRESOURCE_ACTION" EntityType="Self.WEBRESOURCE_ACTION" />
+          <EntitySet Name="FileImportSettings" EntityType="Self.FileImportSetting" />
+          <EntitySet Name="application_USZipcodes" EntityType="Self.application_USZipcodes" />
+          <EntitySet Name="BOARDCERTIFICATION_RAW" EntityType="Self.BOARDCERTIFICATION_RAW" />
+          <EntitySet Name="DEGREE_RAW" EntityType="Self.DEGREE_RAW" />
+          <EntitySet Name="HOSPAFFILIATION_RAW" EntityType="Self.HOSPAFFILIATION_RAW" />
+          <EntitySet Name="LOCATION_RAW" EntityType="Self.LOCATION_RAW" />
+          <EntitySet Name="LOCATIONINSURANCE_RAW" EntityType="Self.LOCATIONINSURANCE_RAW" />
+          <EntitySet Name="PROVIDER_RAW" EntityType="Self.PROVIDER_RAW" />
+          <EntitySet Name="SH_COUNTY" EntityType="Self.SH_COUNTY" />
+          <EntitySet Name="SH_COUNTYPLANINTERSECTION" EntityType="Self.SH_COUNTYPLANINTERSECTION" />
+          <EntitySet Name="SH_OPTIONALBENEFITS" EntityType="Self.SH_OPTIONALBENEFITS" />
+          <EntitySet Name="SH_PLAN" EntityType="Self.SH_PLAN" />
+          <EntitySet Name="SH_ZIPCODE" EntityType="Self.SH_ZIPCODE" />
+          <EntitySet Name="SH_ZIPCODECOUNTYINTERSECTION" EntityType="Self.SH_ZIPCODECOUNTYINTERSECTION" />
+          <EntitySet Name="SPECIALTY_RAW" EntityType="Self.SPECIALTY_RAW" />
+          <EntitySet Name="STEPEXPRESSREGISTRATIONs" EntityType="Self.STEPEXPRESSREGISTRATION" />
+          <EntitySet Name="TRAINING_RAW" EntityType="Self.TRAINING_RAW" />
+          <AssociationSet Name="FK_AWARD_PROVIDER" Association="Self.FK_AWARD_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="AWARD" EntitySet="AWARDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOARDCERTIFICATION_PROVIDER" Association="Self.FK_BOARDCERTIFICATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="BOARDCERTIFICATION" EntitySet="BOARDCERTIFICATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEGREE_PROVIDER" Association="Self.FK_DEGREE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="DEGREE" EntitySet="DEGREEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSPAFFILIATION_PROVIDER" Association="Self.FK_HOSPAFFILIATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="HOSPAFFILIATION" EntitySet="HOSPAFFILIATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LANGUAGE_PROVIDER" Association="Self.FK_LANGUAGE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="LANGUAGE" EntitySet="LANGUAGEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCATION_PROVIDER" Association="Self.FK_LOCATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="LOCATION" EntitySet="LOCATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCATIONINSURANCE_PROVIDER" Association="Self.FK_LOCATIONINSURANCE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="LOCATIONINSURANCE" EntitySet="LOCATIONINSURANCEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSHIP_PROVIDER" Association="Self.FK_MEMBERSHIP_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="MEMBERSHIP" EntitySet="MEMBERSHIPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENTEDUCATION_PROVIDER" Association="Self.FK_PATIENTEDUCATION_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="PATIENTEDUCATION" EntitySet="PATIENTEDUCATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPECIALTY_PROVIDER" Association="Self.FK_SPECIALTY_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="SPECIALTY" EntitySet="SPECIALTies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAINING_PROVIDER" Association="Self.FK_TRAINING_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="TRAINING" EntitySet="TRAININGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WEBRESOURCE_PROVIDER" Association="Self.FK_WEBRESOURCE_PROVIDER">
+            <End Role="PROVIDER" EntitySet="PROVIDERs" />
+            <End Role="WEBRESOURCE" EntitySet="WEBRESOURCEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FRG_DBTESTSModelStoreContainer" CdmEntityContainer="FRG_DBTESTSEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALL_ACTIONS">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.ALL_ACTIONS">
+              <MappingFragment StoreEntitySet="ALL_ACTIONS">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AWARDs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.AWARD">
+              <MappingFragment StoreEntitySet="AWARD">
+                <ScalarProperty Name="AWARD_ID" ColumnName="AWARD_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="FCILITY_ID" ColumnName="FCILITY_ID" />
+                <ScalarProperty Name="AWARD_NM" ColumnName="AWARD_NM" />
+                <ScalarProperty Name="AWARD_DSC" ColumnName="AWARD_DSC" />
+                <ScalarProperty Name="EFFECTIVE_DT" ColumnName="EFFECTIVE_DT" />
+                <ScalarProperty Name="EXPIRE_DT" ColumnName="EXPIRE_DT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AWARD_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.AWARD_ACTION">
+              <MappingFragment StoreEntitySet="AWARD_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOARDCERTIFICATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.BOARDCERTIFICATION">
+              <MappingFragment StoreEntitySet="BOARDCERTIFICATION">
+                <ScalarProperty Name="BOARDCERTIFICATION_ID" ColumnName="BOARDCERTIFICATION_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="BOARD_DSC" ColumnName="BOARD_DSC" />
+                <ScalarProperty Name="AWARD_DT" ColumnName="AWARD_DT" />
+                <ScalarProperty Name="REVERIFY_DT" ColumnName="REVERIFY_DT" />
+                <ScalarProperty Name="EXPIRE_DT" ColumnName="EXPIRE_DT" />
+                <ScalarProperty Name="LIFETIMECERTIFICATION_FLG" ColumnName="LIFETIMECERTIFICATION_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOARDCERTIFICATION_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.BOARDCERTIFICATION_ACTION">
+              <MappingFragment StoreEntitySet="BOARDCERTIFICATION_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEGREEs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.DEGREE">
+              <MappingFragment StoreEntitySet="DEGREE">
+                <ScalarProperty Name="DEGREE_ID" ColumnName="DEGREE_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="LEVEL_DSC" ColumnName="LEVEL_DSC" />
+                <ScalarProperty Name="DEGREE_DSC" ColumnName="DEGREE_DSC" />
+                <ScalarProperty Name="INSTITUTION_DSC" ColumnName="INSTITUTION_DSC" />
+                <ScalarProperty Name="INSTITUTION_CITY" ColumnName="INSTITUTION_CITY" />
+                <ScalarProperty Name="INSTITUTION_ST" ColumnName="INSTITUTION_ST" />
+                <ScalarProperty Name="PROGRAM_DSC" ColumnName="PROGRAM_DSC" />
+                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
+                <ScalarProperty Name="END_DT" ColumnName="END_DT" />
+                <ScalarProperty Name="GRADUATED_FLG" ColumnName="GRADUATED_FLG" />
+                <ScalarProperty Name="ED_SPECIALITY" ColumnName="ED_SPECIALITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEGREE_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.DEGREE_ACTION">
+              <MappingFragment StoreEntitySet="DEGREE_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOSPAFFILIATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.HOSPAFFILIATION">
+              <MappingFragment StoreEntitySet="HOSPAFFILIATION">
+                <ScalarProperty Name="HOSPAFFILIATION_ID" ColumnName="HOSPAFFILIATION_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="HOSPITAL_NM" ColumnName="HOSPITAL_NM" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="FACILITY_ID" ColumnName="FACILITY_ID" />
+                <ScalarProperty Name="PRIMARY_FLG" ColumnName="PRIMARY_FLG" />
+                <ScalarProperty Name="FCILITY_STATUS" ColumnName="FCILITY_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOSPAFFILIATION_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.HOSPAFFILIATION_ACTION">
+              <MappingFragment StoreEntitySet="HOSPAFFILIATION_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LANGUAGEs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LANGUAGE">
+              <MappingFragment StoreEntitySet="LANGUAGE">
+                <ScalarProperty Name="LANGUAGE_ID" ColumnName="LANGUAGE_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="LANGUAGE_DSC" ColumnName="LANGUAGE_DSC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LANGUAGE_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LANGUAGE_ACTION">
+              <MappingFragment StoreEntitySet="LANGUAGE_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="ADDRESS_SEQ" ColumnName="ADDRESS_SEQ" />
+                <ScalarProperty Name="PRIMARYADDRESS_FLG" ColumnName="PRIMARYADDRESS_FLG" />
+                <ScalarProperty Name="PRACTICE_NM" ColumnName="PRACTICE_NM" />
+                <ScalarProperty Name="ADDRESS_ONE" ColumnName="ADDRESS_ONE" />
+                <ScalarProperty Name="ADDRESS_TWO" ColumnName="ADDRESS_TWO" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ST" ColumnName="ST" />
+                <ScalarProperty Name="COUNTY" ColumnName="COUNTY" />
+                <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+                <ScalarProperty Name="PHONE_NBR" ColumnName="PHONE_NBR" />
+                <ScalarProperty Name="FAX_NBR" ColumnName="FAX_NBR" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="HOURS1" ColumnName="HOURS1" />
+                <ScalarProperty Name="HOURS2" ColumnName="HOURS2" />
+                <ScalarProperty Name="OPENPRACTICE_DSC" ColumnName="OPENPRACTICE_DSC" />
+                <ScalarProperty Name="OPENLATE_FLG" ColumnName="OPENLATE_FLG" />
+                <ScalarProperty Name="OPENEARLY_FLG" ColumnName="OPENEARLY_FLG" />
+                <ScalarProperty Name="OPENWEEKEND_FLG" ColumnName="OPENWEEKEND_FLG" />
+                <ScalarProperty Name="AFTERHOURSINSTRUCTIONS" ColumnName="AFTERHOURSINSTRUCTIONS" />
+                <ScalarProperty Name="FACILITY_ID" ColumnName="FACILITY_ID" />
+                <ScalarProperty Name="ADA_FLG" ColumnName="ADA_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATION_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATION_ACTION">
+              <MappingFragment StoreEntitySet="LOCATION_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONINSURANCEs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATIONINSURANCE">
+              <MappingFragment StoreEntitySet="LOCATIONINSURANCE">
+                <ScalarProperty Name="LOCATIONINSURANCE_ID" ColumnName="LOCATIONINSURANCE_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="ADDRESS_SEQ" ColumnName="ADDRESS_SEQ" />
+                <ScalarProperty Name="PLAN_CODE" ColumnName="PLAN_CODE" />
+                <ScalarProperty Name="PLAN_NM" ColumnName="PLAN_NM" />
+                <ScalarProperty Name="EXCEPTIONS" ColumnName="EXCEPTIONS" />
+                <ScalarProperty Name="PCP_FLG" ColumnName="PCP_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONINSURANCE_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATIONINSURANCE_ACTION">
+              <MappingFragment StoreEntitySet="LOCATIONINSURANCE_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERSHIPs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.MEMBERSHIP">
+              <MappingFragment StoreEntitySet="MEMBERSHIP">
+                <ScalarProperty Name="MEMBERSHIP_ID" ColumnName="MEMBERSHIP_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="PROF_DSC" ColumnName="PROF_DSC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERSHIP_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.MEMBERSHIP_ACTION">
+              <MappingFragment StoreEntitySet="MEMBERSHIP_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENTEDUCATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.PATIENTEDUCATION">
+              <MappingFragment StoreEntitySet="PATIENTEDUCATION">
+                <ScalarProperty Name="PATIENTEDUCATION_ID" ColumnName="PATIENTEDUCATION_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENTEDUCATION_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.PATIENTEDUCATION_ACTION">
+              <MappingFragment StoreEntitySet="PATIENTEDUCATION_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVIDERs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.PROVIDER">
+              <MappingFragment StoreEntitySet="PROVIDER">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="FIRST_NM" ColumnName="FIRST_NM" />
+                <ScalarProperty Name="MIDDLE_NM" ColumnName="MIDDLE_NM" />
+                <ScalarProperty Name="LAST_NM" ColumnName="LAST_NM" />
+                <ScalarProperty Name="TITLE_NM" ColumnName="TITLE_NM" />
+                <ScalarProperty Name="INTERMOUNTAIN_FLG" ColumnName="INTERMOUNTAIN_FLG" />
+                <ScalarProperty Name="IMGPROVIDER_FLG" ColumnName="IMGPROVIDER_FLG" />
+                <ScalarProperty Name="MYHEALTHPROVIDER_FLG" ColumnName="MYHEALTHPROVIDER_FLG" />
+                <ScalarProperty Name="SELECTHEALTH_FLG" ColumnName="SELECTHEALTH_FLG" />
+                <ScalarProperty Name="SH_IDAHOFLG" ColumnName="SH_IDAHOFLG" />
+                <ScalarProperty Name="STLUKESPROVIDER_FLG" ColumnName="STLUKESPROVIDER_FLG" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="PHOTO_URL" ColumnName="PHOTO_URL" />
+                <ScalarProperty Name="VIDEO_URL" ColumnName="VIDEO_URL" />
+                <ScalarProperty Name="ACCEPTINGNEWPATIENTS_FLG" ColumnName="ACCEPTINGNEWPATIENTS_FLG" />
+                <ScalarProperty Name="PRACTICES_OB" ColumnName="PRACTICES_OB" />
+                <ScalarProperty Name="BIO_INTERESTS" ColumnName="BIO_INTERESTS" />
+                <ScalarProperty Name="PROFESSIONAL_POSITIONS" ColumnName="PROFESSIONAL_POSITIONS" />
+                <ScalarProperty Name="PRACTICE_FOCUS" ColumnName="PRACTICE_FOCUS" />
+                <ScalarProperty Name="NPI" ColumnName="NPI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVIDER_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.PROVIDER_ACTION">
+              <MappingFragment StoreEntitySet="PROVIDER_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SITECORELOCATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SITECORELOCATION">
+              <MappingFragment StoreEntitySet="SITECORELOCATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NCID" ColumnName="NCID" />
+                <ScalarProperty Name="SITECORE_GUID" ColumnName="SITECORE_GUID" />
+                <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPECIALTies">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SPECIALTY">
+              <MappingFragment StoreEntitySet="SPECIALTY">
+                <ScalarProperty Name="SPECIALTY_ID" ColumnName="SPECIALTY_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="CREDENTIALING_DSC" ColumnName="CREDENTIALING_DSC" />
+                <ScalarProperty Name="WEB_DSC" ColumnName="WEB_DSC" />
+                <ScalarProperty Name="PRIMARY_FLG" ColumnName="PRIMARY_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPECIALTY_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SPECIALTY_ACTION">
+              <MappingFragment StoreEntitySet="SPECIALTY_ACTION">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAININGs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.TRAINING">
+              <MappingFragment StoreEntitySet="TRAINING">
+                <ScalarProperty Name="TRAINING_ID" ColumnName="TRAINING_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="LEVEL_DSC" ColumnName="LEVEL_DSC" />
+                <ScalarProperty Name="DEGREE_DSC" ColumnName="DEGREE_DSC" />
+                <ScalarProperty Name="INSTITUTION_DSC" ColumnName="INSTITUTION_DSC" />
+                <ScalarProperty Name="INSTITUTION_CITY" ColumnName="INSTITUTION_CITY" />
+                <ScalarProperty Name="INSTITUTION_ST" ColumnName="INSTITUTION_ST" />
+                <ScalarProperty Name="PROGRAM_DSC" ColumnName="PROGRAM_DSC" />
+                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
+                <ScalarProperty Name="END_DT" ColumnName="END_DT" />
+                <ScalarProperty Name="GRADUATED_FLG" ColumnName="GRADUATED_FLG" />
+                <ScalarProperty Name="ED_SPECIALITY" ColumnName="ED_SPECIALITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAINING_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.TRAINING_ACTION">
+              <MappingFragment StoreEntitySet="TRAINING_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WEBRESOURCEs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.WEBRESOURCE">
+              <MappingFragment StoreEntitySet="WEBRESOURCE">
+                <ScalarProperty Name="WEBRESOURCE_ID" ColumnName="WEBRESOURCE_ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="RESOURCE_DSC" ColumnName="RESOURCE_DSC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WEBRESOURCE_ACTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.WEBRESOURCE_ACTION">
+              <MappingFragment StoreEntitySet="WEBRESOURCE_ACTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModifiedField" ColumnName="ModifiedField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileImportSettings">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.FileImportSetting">
+              <MappingFragment StoreEntitySet="FileImportSettings">
+                <ScalarProperty Name="FileImportSettingID" ColumnName="FileImportSettingID" />
+                <ScalarProperty Name="FileImportSettingValue" ColumnName="FileImportSettingValue" />
+                <ScalarProperty Name="DEX_ROW" ColumnName="DEX_ROW" />
+                <ScalarProperty Name="DEX_ROW_TS" ColumnName="DEX_ROW_TS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_USZipcodes">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.application_USZipcodes">
+              <MappingFragment StoreEntitySet="application_USZipcodes">
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOARDCERTIFICATION_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.BOARDCERTIFICATION_RAW">
+              <MappingFragment StoreEntitySet="BOARDCERTIFICATION_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="BOARD_DSC" ColumnName="BOARD_DSC" />
+                <ScalarProperty Name="AWARD_DT" ColumnName="AWARD_DT" />
+                <ScalarProperty Name="REVERIFY_DT" ColumnName="REVERIFY_DT" />
+                <ScalarProperty Name="EXPIRE_DT" ColumnName="EXPIRE_DT" />
+                <ScalarProperty Name="LIFETIMECERTIFICATION_FLG" ColumnName="LIFETIMECERTIFICATION_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEGREE_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.DEGREE_RAW">
+              <MappingFragment StoreEntitySet="DEGREE_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="LEVEL_DSC" ColumnName="LEVEL_DSC" />
+                <ScalarProperty Name="DEGREE_DSC" ColumnName="DEGREE_DSC" />
+                <ScalarProperty Name="INSTITUTION_DSC" ColumnName="INSTITUTION_DSC" />
+                <ScalarProperty Name="INSTITUTION_CITY" ColumnName="INSTITUTION_CITY" />
+                <ScalarProperty Name="INSTITUTION_ST" ColumnName="INSTITUTION_ST" />
+                <ScalarProperty Name="PROGRAM_DSC" ColumnName="PROGRAM_DSC" />
+                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
+                <ScalarProperty Name="END_DT" ColumnName="END_DT" />
+                <ScalarProperty Name="GRADUATED_FLG" ColumnName="GRADUATED_FLG" />
+                <ScalarProperty Name="ED_SPECIALITY" ColumnName="ED_SPECIALITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOSPAFFILIATION_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.HOSPAFFILIATION_RAW">
+              <MappingFragment StoreEntitySet="HOSPAFFILIATION_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="HOSPITAL_NM" ColumnName="HOSPITAL_NM" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SOME_NUMBER" ColumnName="SOME_NUMBER" />
+                <ScalarProperty Name="FACILITY_ID" ColumnName="FACILITY_ID" />
+                <ScalarProperty Name="PRIMARY_FLG" ColumnName="PRIMARY_FLG" />
+                <ScalarProperty Name="FCILITY_STATUS" ColumnName="FCILITY_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATION_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATION_RAW">
+              <MappingFragment StoreEntitySet="LOCATION_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="ADDRESS_SEQ" ColumnName="ADDRESS_SEQ" />
+                <ScalarProperty Name="PRIMARYADDRESS_FLG" ColumnName="PRIMARYADDRESS_FLG" />
+                <ScalarProperty Name="PRACTICE_NM" ColumnName="PRACTICE_NM" />
+                <ScalarProperty Name="ADDRESS_ONE" ColumnName="ADDRESS_ONE" />
+                <ScalarProperty Name="ADDRESS_TWO" ColumnName="ADDRESS_TWO" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ST" ColumnName="ST" />
+                <ScalarProperty Name="COUNTY" ColumnName="COUNTY" />
+                <ScalarProperty Name="ZIP_CODE" ColumnName="ZIP_CODE" />
+                <ScalarProperty Name="PHONE_NBR" ColumnName="PHONE_NBR" />
+                <ScalarProperty Name="FAX_NBR" ColumnName="FAX_NBR" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="HOURS1" ColumnName="HOURS1" />
+                <ScalarProperty Name="HOURS2" ColumnName="HOURS2" />
+                <ScalarProperty Name="OPENPRACTICE_DSC" ColumnName="OPENPRACTICE_DSC" />
+                <ScalarProperty Name="OPENLATE_FLG" ColumnName="OPENLATE_FLG" />
+                <ScalarProperty Name="OPENEARLY_FLG" ColumnName="OPENEARLY_FLG" />
+                <ScalarProperty Name="OPENWEEKEND_FLG" ColumnName="OPENWEEKEND_FLG" />
+                <ScalarProperty Name="AFTERHOURSINSTRUCTIONS" ColumnName="AFTERHOURSINSTRUCTIONS" />
+                <ScalarProperty Name="NOT_USED" ColumnName="NOT_USED" />
+                <ScalarProperty Name="FACILITY_ID" ColumnName="FACILITY_ID" />
+                <ScalarProperty Name="ADA_FLG" ColumnName="ADA_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONINSURANCE_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.LOCATIONINSURANCE_RAW">
+              <MappingFragment StoreEntitySet="LOCATIONINSURANCE_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="ADDRESS_SEQ" ColumnName="ADDRESS_SEQ" />
+                <ScalarProperty Name="PLAN_CODE" ColumnName="PLAN_CODE" />
+                <ScalarProperty Name="PLAN_NM" ColumnName="PLAN_NM" />
+                <ScalarProperty Name="EXCEPTIONS" ColumnName="EXCEPTIONS" />
+                <ScalarProperty Name="PCP_FLG" ColumnName="PCP_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVIDER_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.PROVIDER_RAW">
+              <MappingFragment StoreEntitySet="PROVIDER_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="FIRST_NM" ColumnName="FIRST_NM" />
+                <ScalarProperty Name="MIDDLE_NM" ColumnName="MIDDLE_NM" />
+                <ScalarProperty Name="LAST_NM" ColumnName="LAST_NM" />
+                <ScalarProperty Name="TITLE_NM" ColumnName="TITLE_NM" />
+                <ScalarProperty Name="INTERMOUNTAIN_FLG" ColumnName="INTERMOUNTAIN_FLG" />
+                <ScalarProperty Name="IMGPROVIDER_FLG" ColumnName="IMGPROVIDER_FLG" />
+                <ScalarProperty Name="MYHEALTHPROVIDER_FLG" ColumnName="MYHEALTHPROVIDER_FLG" />
+                <ScalarProperty Name="SELECTHEALTH_FLG" ColumnName="SELECTHEALTH_FLG" />
+                <ScalarProperty Name="SH_IDAHOFLG" ColumnName="SH_IDAHOFLG" />
+                <ScalarProperty Name="STLUKESPROVIDER_FLG" ColumnName="STLUKESPROVIDER_FLG" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="PHOTO_URL" ColumnName="PHOTO_URL" />
+                <ScalarProperty Name="VIDEO_URL" ColumnName="VIDEO_URL" />
+                <ScalarProperty Name="ACCEPTINGNEWPATIENTS_FLG" ColumnName="ACCEPTINGNEWPATIENTS_FLG" />
+                <ScalarProperty Name="PRACTICES_OB" ColumnName="PRACTICES_OB" />
+                <ScalarProperty Name="BIO_INTERESTS" ColumnName="BIO_INTERESTS" />
+                <ScalarProperty Name="PROFESSIONAL_POSITIONS" ColumnName="PROFESSIONAL_POSITIONS" />
+                <ScalarProperty Name="PRACTICE_FOCUS" ColumnName="PRACTICE_FOCUS" />
+                <ScalarProperty Name="NPI" ColumnName="NPI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_COUNTY">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_COUNTY">
+              <MappingFragment StoreEntitySet="SH_COUNTY">
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Covered" ColumnName="Covered" />
+                <ScalarProperty Name="CoveredNextYear" ColumnName="CoveredNextYear" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ServiceArea" ColumnName="ServiceArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_COUNTYPLANINTERSECTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_COUNTYPLANINTERSECTION">
+              <MappingFragment StoreEntitySet="SH_COUNTYPLANINTERSECTION">
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_OPTIONALBENEFITS">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_OPTIONALBENEFITS">
+              <MappingFragment StoreEntitySet="SH_OPTIONALBENEFITS">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="PlanHeader" ColumnName="PlanHeader" />
+                <ScalarProperty Name="BenefitDescription" ColumnName="BenefitDescription" />
+                <ScalarProperty Name="ServiceArea" ColumnName="ServiceArea" />
+                <ScalarProperty Name="Premium" ColumnName="Premium" />
+                <ScalarProperty Name="DentalDeductible" ColumnName="DentalDeductible" />
+                <ScalarProperty Name="AnnualMedicalDeductible" ColumnName="AnnualMedicalDeductible" />
+                <ScalarProperty Name="OralExaminations" ColumnName="OralExaminations" />
+                <ScalarProperty Name="Cleanings" ColumnName="Cleanings" />
+                <ScalarProperty Name="XRays" ColumnName="XRays" />
+                <ScalarProperty Name="Basic" ColumnName="Basic" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Orthodontics" ColumnName="Orthodontics" />
+                <ScalarProperty Name="PlusPlanHeader" ColumnName="PlusPlanHeader" />
+                <ScalarProperty Name="PremiumPlus" ColumnName="PremiumPlus" />
+                <ScalarProperty Name="EyewearBenefit" ColumnName="EyewearBenefit" />
+                <ScalarProperty Name="DentalDeductiblePlus" ColumnName="DentalDeductiblePlus" />
+                <ScalarProperty Name="AnnualMaximumPlanPayment" ColumnName="AnnualMaximumPlanPayment" />
+                <ScalarProperty Name="OralExaminationsPlus" ColumnName="OralExaminationsPlus" />
+                <ScalarProperty Name="CleaningsPlus" ColumnName="CleaningsPlus" />
+                <ScalarProperty Name="XRaysPlus" ColumnName="XRaysPlus" />
+                <ScalarProperty Name="BasicPlus" ColumnName="BasicPlus" />
+                <ScalarProperty Name="MajorPlus" ColumnName="MajorPlus" />
+                <ScalarProperty Name="OrthodonticsPlus" ColumnName="OrthodonticsPlus" />
+                <ScalarProperty Name="PlanDescription" ColumnName="PlanDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_PLAN">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_PLAN">
+              <MappingFragment StoreEntitySet="SH_PLAN">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PreviousPremium" ColumnName="PreviousPremium" />
+                <ScalarProperty Name="Premium" ColumnName="Premium" />
+                <ScalarProperty Name="MonthlyPremium" ColumnName="MonthlyPremium" />
+                <ScalarProperty Name="AnnualDeductible" ColumnName="AnnualDeductible" />
+                <ScalarProperty Name="MaxOutOfPocket" ColumnName="MaxOutOfPocket" />
+                <ScalarProperty Name="PrimaryCareVisits" ColumnName="PrimaryCareVisits" />
+                <ScalarProperty Name="SpecialistVisits" ColumnName="SpecialistVisits" />
+                <ScalarProperty Name="PreventativeServices" ColumnName="PreventativeServices" />
+                <ScalarProperty Name="InPatientHospitalization" ColumnName="InPatientHospitalization" />
+                <ScalarProperty Name="OutpatientSurgery" ColumnName="OutpatientSurgery" />
+                <ScalarProperty Name="HearingAidBenefit" ColumnName="HearingAidBenefit" />
+                <ScalarProperty Name="ErVisit" ColumnName="ErVisit" />
+                <ScalarProperty Name="LabTests" ColumnName="LabTests" />
+                <ScalarProperty Name="Xray" ColumnName="Xray" />
+                <ScalarProperty Name="AnnualRXDeductible" ColumnName="AnnualRXDeductible" />
+                <ScalarProperty Name="Tier1" ColumnName="Tier1" />
+                <ScalarProperty Name="Tier2" ColumnName="Tier2" />
+                <ScalarProperty Name="Tier3" ColumnName="Tier3" />
+                <ScalarProperty Name="Tier4" ColumnName="Tier4" />
+                <ScalarProperty Name="Tier5" ColumnName="Tier5" />
+                <ScalarProperty Name="AnnualRxDeductibleMail" ColumnName="AnnualRxDeductibleMail" />
+                <ScalarProperty Name="Tier1Mail" ColumnName="Tier1Mail" />
+                <ScalarProperty Name="Tier2Mail" ColumnName="Tier2Mail" />
+                <ScalarProperty Name="Tier3Mail" ColumnName="Tier3Mail" />
+                <ScalarProperty Name="Tier4Mail" ColumnName="Tier4Mail" />
+                <ScalarProperty Name="Tier5Mail" ColumnName="Tier5Mail" />
+                <ScalarProperty Name="SummaryBenefitsURL" ColumnName="SummaryBenefitsURL" />
+                <ScalarProperty Name="SummaryBenefitsSpanishURL" ColumnName="SummaryBenefitsSpanishURL" />
+                <ScalarProperty Name="PremiumSummaryURL" ColumnName="PremiumSummaryURL" />
+                <ScalarProperty Name="EvidenceCoverageSpanishURL" ColumnName="EvidenceCoverageSpanishURL" />
+                <ScalarProperty Name="EvidenceCoverageURL" ColumnName="EvidenceCoverageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_ZIPCODE">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_ZIPCODE">
+              <MappingFragment StoreEntitySet="SH_ZIPCODE">
+                <ScalarProperty Name="ZipcodeId" ColumnName="ZipcodeId" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_ZIPCODECOUNTYINTERSECTION">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SH_ZIPCODECOUNTYINTERSECTION">
+              <MappingFragment StoreEntitySet="SH_ZIPCODECOUNTYINTERSECTION">
+                <ScalarProperty Name="ZipcodeId" ColumnName="ZipcodeId" />
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPECIALTY_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.SPECIALTY_RAW">
+              <MappingFragment StoreEntitySet="SPECIALTY_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="CREDENTIALING_DSC" ColumnName="CREDENTIALING_DSC" />
+                <ScalarProperty Name="WEB_DSC" ColumnName="WEB_DSC" />
+                <ScalarProperty Name="PRIMARY_FLG" ColumnName="PRIMARY_FLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STEPEXPRESSREGISTRATIONs">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.STEPEXPRESSREGISTRATION">
+              <MappingFragment StoreEntitySet="STEPEXPRESSREGISTRATION">
+                <ScalarProperty Name="SCHOOL_NAME" ColumnName="SCHOOL_NAME" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="SCHOOL_ADDRESS" ColumnName="SCHOOL_ADDRESS" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="SCHOOL_PHONE_NUMBER" ColumnName="SCHOOL_PHONE_NUMBER" />
+                <ScalarProperty Name="PRIVATE_SCHOOL" ColumnName="PRIVATE_SCHOOL" />
+                <ScalarProperty Name="PREVIOUSLY_PARTICIPATED" ColumnName="PREVIOUSLY_PARTICIPATED" />
+                <ScalarProperty Name="PRINCIPALS_NAME" ColumnName="PRINCIPALS_NAME" />
+                <ScalarProperty Name="SCHOOL_EMAIL" ColumnName="SCHOOL_EMAIL" />
+                <ScalarProperty Name="NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED" ColumnName="NUMBER_OF_LESSON_PLAN_BINDERS_REQUIRED" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_1" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_1" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_1" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_1" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_2" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_2" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_2" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_2" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_3" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_3" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_3" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_3" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_4" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_4" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_4" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_4" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_5" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_5" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_5" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_5" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_6" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_6" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_6" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_6" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHERNAME_7" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_CLASSTEACHEREMAIL_7" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_ENGLISH_PARTICIPANTS_7" />
+                <ScalarProperty Name="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7" ColumnName="FOURTH_GRADE_CLASS_INFORMATION_SPANISH_PARTICIPANTS_7" />
+                <ScalarProperty Name="PE_SPECIALIST_NAME" ColumnName="PE_SPECIALIST_NAME" />
+                <ScalarProperty Name="PE_SPECIALIST_EMAIL" ColumnName="PE_SPECIALIST_EMAIL" />
+                <ScalarProperty Name="PERSON_SUBMITTING_REGISTRATION" ColumnName="PERSON_SUBMITTING_REGISTRATION" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT" ColumnName="REMAINDER_SOURCE_OTHER_PAST_PARTICIPANT" />
+                <ScalarProperty Name="REMAINDER_SOURCE_MAILING" ColumnName="REMAINDER_SOURCE_MAILING" />
+                <ScalarProperty Name="REMAINDER_SOURCE_EMAIL" ColumnName="REMAINDER_SOURCE_EMAIL" />
+                <ScalarProperty Name="REMAINDER_SOURCE_BILLBOARD" ColumnName="REMAINDER_SOURCE_BILLBOARD" />
+                <ScalarProperty Name="REMAINDER_SOURCE_OTHER" ColumnName="REMAINDER_SOURCE_OTHER" />
+                <ScalarProperty Name="ADDITIONAL_COMMENTS_NEEDS" ColumnName="ADDITIONAL_COMMENTS_NEEDS" />
+                <ScalarProperty Name="REGISTRATION_DATETIME" ColumnName="REGISTRATION_DATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAINING_RAW">
+            <EntityTypeMapping TypeName="FRG_DBTESTSModel.TRAINING_RAW">
+              <MappingFragment StoreEntitySet="TRAINING_RAW">
+                <ScalarProperty Name="PRVDR_ID" ColumnName="PRVDR_ID" />
+                <ScalarProperty Name="LEVEL_DSC" ColumnName="LEVEL_DSC" />
+                <ScalarProperty Name="DEGREE_DSC" ColumnName="DEGREE_DSC" />
+                <ScalarProperty Name="INSTITUTION_DSC" ColumnName="INSTITUTION_DSC" />
+                <ScalarProperty Name="INSTITUTION_CITY" ColumnName="INSTITUTION_CITY" />
+                <ScalarProperty Name="INSTITUTION_ST" ColumnName="INSTITUTION_ST" />
+                <ScalarProperty Name="PROGRAM_DSC" ColumnName="PROGRAM_DSC" />
+                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
+                <ScalarProperty Name="END_DT" ColumnName="END_DT" />
+                <ScalarProperty Name="GRADUATED_FLG" ColumnName="GRADUATED_FLG" />
+                <ScalarProperty Name="ED_SPECIALITY" ColumnName="ED_SPECIALITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
